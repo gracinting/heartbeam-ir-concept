@@ -1,0 +1,1397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>HeartBeam, Inc. (Nasdaq: BEAT) | Investor Relations Concept</title>
+<meta name="description" content="An independent design concept for the HeartBeam (Nasdaq: BEAT) investor relations page. Not affiliated with HeartBeam, Inc.; the official IR site is https://ir.heartbeam.com/.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet">
+<style>
+/* mc:tokens */
+:root{
+  /* palette.mjs --brand "#ec1c24,deep=#0b0b1f" --neutral-hue 281 --strategy restrained  (restrained)
+     accent   #ec1c24 oklch(0.601 0.234 27)   real: favicon pixel sample, logo heart (#f51d1e / #ff1e1f), every primary button on both hosts
+     ink      #0b0b1f hue 281                 real: the site's body ink (13x in CSS); the dark bands are this hue, deepened below the generator's default
+     measured (generator, before the three hand edits below): white on --accent-ink 7.86:1, --accent-ink on --paper 7.63:1, --text-mid on --tint 5.64:1
+     Hand edits, each stated: (1) --tint and --tint-2 sit at the NEUTRAL hue 281, not the red 27, so the two light stocks read as ink-tinted paper and the page does not turn pink
+     (the only pink is the ECG sheet stock below, used on the hero plate and the one signature figure); (2) --deep 0.19 and --deep-2 0.145 are lower than the generator's 0.215 so the
+     dark bands are as dark as the real ink; (3) the --serif slot carries Poppins (a real heading face of the company's site), --sans carries Montserrat (its real body face). */
+  --H: 27; --Hn: 281;
+  --accent:        oklch(0.601 0.234 27);   /* bright real red: FILLS and strokes; text only on dark bands */
+  --accent-lo:     oklch(0.601 0.234 27 / 0.14);
+  --accent-lt:     oklch(0.86 0.075 27);    /* bright accent ON dark surfaces */
+  --accent-ink:    oklch(0.46 0.187 27);    /* TEXT, links, primary-button background */
+  --accent-ink-d:  oklch(0.40 0.163 27);    /* hover */
+  --ink:           oklch(0.26 0.015 281);   /* headings */
+  --deep:          oklch(0.19 0.032 281);   /* permanently dark bands (the real ink hue, deepened) */
+  --deep-2:        oklch(0.145 0.028 281);  /* gravest band (disclosures) and footer: darker, same hue, no added chroma */
+  --paper:         oklch(0.99 0.004 281);
+  --card:          oklch(0.996 0.001 281);
+  --tint:          oklch(0.965 0.011 281);  /* .sec-tint band, card interiors: ink-tinted paper */
+  --tint-2:        oklch(0.915 0.02 281);   /* borders, ghost outlines, the darker of two light bands */
+  --text:          oklch(0.31 0.015 281);
+  --text-mid:      oklch(0.49 0.015 281);
+  --line:          oklch(0.30 0.010 281 / 0.13);
+  --line-d:        oklch(0.98 0.009 281 / 0.14);
+  /* the ECG sheet stock (hero plate and the signature figure ONLY): a pale red-tinted paper, and the red grid printed on it */
+  --ecg-paper:     oklch(0.977 0.014 27);
+  --ecg-minor:     oklch(0.80 0.09 27 / 0.30);
+  --ecg-major:     oklch(0.72 0.13 27 / 0.40);
+  /* surface-slot defaults (foundation surface block); retuned in surface.css */
+  --sheet-edge:    oklch(0.40 0.1 281 / 0.26);
+  --blind:         oklch(1.00 0.000 0 / 0.5);
+  --blind-k:       oklch(1.00 0.000 0 / 0.85);
+  --sheet-neg:     oklch(0.98 0.009 281 / 0.05);
+  /* HeartBeam: Poppins is the heading face of the company's own site (weights 200 and 600 here for contrast), Montserrat its body face.
+     JetBrains Mono carries labels, dates, lead names and citations only. Figures are set in Poppins with tabular-nums (its zero is plain). */
+  --serif:         'Poppins', system-ui, sans-serif;
+  --sans:          'Montserrat', system-ui, sans-serif;
+  --mono:          'JetBrains Mono', ui-monospace, monospace;
+  --wrap: 1180px; --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* mc:substrate 9576b9be1505 */
+/* mediaconsole substrate: inlined by scripts/scaffold.mjs, identical on every page. Never edit or retype it;
+   override in page/layer.css or page/surface.css (both load after it). Band: all. Hue-parametric: colours are
+   tokens or oklch(... var(--Hn)). Integrity: opaque nav, content visible without JS, print and forced-colors safe. */
+:where(:root){--wrap:1140px;--ease:cubic-bezier(0.22, 1, 0.36, 1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:88px}
+body{font-family:var(--sans);color:var(--text);background:var(--paper);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none} img,svg{display:block;max-width:100%} button{font:inherit;cursor:pointer}
+::selection{background:var(--accent-lt);color:var(--deep)}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:2px}
+.sec-dark :focus-visible,.snapshot :focus-visible,footer :focus-visible{outline-color:var(--accent-lt)}
+.wrap{width:min(var(--wrap),100% - 44px);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--deep);color:#fff;padding:10px 16px;border-radius:6px;font-size:.85rem;transition:top .2s var(--ease)}
+.skip-link:focus{top:12px}
+.concept-note{background:var(--tint);color:var(--accent-ink-d);font-size:.78rem;text-align:center;padding:8px 16px;position:relative;z-index:101}
+.concept-note a{color:inherit;font-weight:600;text-decoration:underline}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+h1{font-size:clamp(2.35rem,5.3vw,4rem)} h2{font-size:clamp(1.7rem,3.4vw,2.5rem)} h3{font-size:clamp(1.15rem,2vw,1.4rem)}
+p{max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);display:inline-flex;align-items:center;gap:9px;margin-bottom:16px}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.lead{font-size:clamp(1.08rem,1.7vw,1.3rem);line-height:1.55;color:var(--text-mid)}
+/* four house buttons: primary + ghost on light stock, primary-light + ghost-light on dark stock.
+   Text on dark uses --accent-lt, never --accent (D16: --accent may be a mid-L real brand colour; it is a fill). */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:8px;font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.02em;border:1.5px solid transparent;background:transparent;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
+.btn:hover{transform:translateY(-1px)} .btn .arw{font-family:var(--mono);transition:transform .2s var(--ease)} .btn:hover .arw{transform:translateX(3px)}
+.btn-primary{background:var(--accent-ink);color:#fff} .btn-primary:hover{background:var(--accent-ink-d)}
+.btn-ghost{border-color:var(--tint-2);color:var(--accent-ink)} .btn-ghost:hover{background:var(--tint);border-color:var(--accent-ink)}
+.btn-primary-light{background:var(--accent-lt);color:var(--deep)} .btn-primary-light:hover{background:var(--tint)}
+.btn-ghost-light{border-color:oklch(0.98 0.01 var(--Hn)/.4);color:#fff} .btn-ghost-light:hover{background:oklch(0.98 0.01 var(--Hn)/.1)}
+/* nav: opaque by rule (no translucency, no blur); markup is emitted by scaffold.mjs from page.json */
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.site-nav.scrolled{box-shadow:0 6px 24px oklch(0.3 0.02 var(--Hn)/.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:12px;min-height:44px;min-width:0}
+.nav-logo{display:flex;align-items:center;flex:none}
+.nav-logo img{height:26px;width:auto}
+.nav-name{font-family:var(--serif);font-size:1.2rem;line-height:1.1;color:var(--ink)}
+.nav-tick{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--text-mid);border:1px solid var(--line);border-radius:5px;padding:4px 8px}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a:not(.btn){font-size:.86rem;font-weight:500;color:var(--text-mid);transition:color .2s var(--ease)}
+.nav-links a:not(.btn):hover{color:var(--accent-ink)}
+.nav-links a.active{color:var(--ink);text-decoration:underline;text-underline-offset:7px;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.nav-burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none}
+.nav-burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease),opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* bands: FLAT FILLS, the floor only; page/surface.css must override them (verify FAILs flat pages) */
+main{display:block;overflow-x:clip}   /* a translated reveal or wide motif can never widen the page */
+main>section{padding:clamp(56px,8vw,104px) 0}
+.sec-white{background:var(--paper)} .sec-tint{background:var(--tint)}
+.sec-dark{background:var(--deep);color:oklch(0.9 0.008 var(--Hn))}
+.sec-dark h1,.sec-dark h2,.sec-dark h3{color:#fff} .sec-dark .eyebrow{color:var(--accent-lt)} .sec-dark .eyebrow::before{background:var(--accent)}
+.sec-dark .lead{color:oklch(0.86 0.01 var(--Hn))}
+.sec-head{max-width:660px;margin-bottom:clamp(36px,5vw,56px)} .sec-head p{margin-top:14px}
+/* data sits on its own plate: table.fin cells are transparent, never paint a band behind figures */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table.fin{width:100%;border-collapse:collapse;min-width:540px;font-size:.92rem}
+table.fin caption{text-align:left;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-mid);padding:14px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+table.fin th,table.fin td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line)}
+table.fin tbody tr:last-child td{border-bottom:none}
+table.fin td.num{font-family:var(--mono);text-align:right;color:var(--ink);font-weight:500}
+table.fin thead th{font-weight:700;color:var(--ink);background:var(--card)}
+footer{background:var(--deep);color:oklch(0.76 0.008 var(--Hn));padding:56px 0 28px}
+.fls{padding:32px 0 0;font-size:.78rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn));max-width:98ch} .fls b{color:oklch(0.85 0.01 var(--Hn))}
+.fls a{color:inherit;text-decoration:underline} .fls+.fls{padding-top:14px}
+.market-note{padding-top:18px;margin-top:18px;border-top:1px solid var(--line-d);font-size:.72rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn))}
+/* reveal: hidden only once motion.js has set html.js, so no-JS and JS failure show everything.
+   Direction variants set --reveal-from (components/motion-extra.css); stagger with style="--d:.08s". */
+.reveal{transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal:not(.in){opacity:0;transform:var(--reveal-from,translateY(20px))}
+/* motif pause: motion.js toggles .paused on #hero-motif off-screen, in a hidden tab, or via [data-motif-toggle] */
+.paused,.paused::before,.paused::after,.paused *,.paused *::before,.paused *::after{animation-play-state:paused!important}
+@media (max-width:900px){
+  .nav-burger{display:flex}
+  .nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:2px;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 22px 20px;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;box-shadow:0 16px 30px oklch(0.3 0.02 var(--Hn)/.08)}
+  .nav-links.open{opacity:1;transform:none;visibility:visible;pointer-events:auto}
+  .nav-links li{width:100%} .nav-links a:not(.btn){display:block;padding:12px 0} .nav-links .btn{margin-top:10px;display:inline-flex}
+}
+@media (max-width:768px){ .footer-links a,.contact-col a{min-height:44px;display:flex;align-items:center} }   /* 44px tap targets; (0,1,1) so layer.css can restyle */
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{transition:none} .js .reveal:not(.in){opacity:1;transform:none}
+  .btn:hover{transform:none} [class*="motif"]{animation:none!important} [data-motif-toggle]{display:none}
+}
+/* print (D12): decoration off, every reveal shown, dark bands re-inked dark-on-white (backgrounds may not print).
+   A custom dark band must carry .sec-dark so this, its focus ring and its heading colour all apply. */
+@media print{
+  *,*::before,*::after{background-image:none!important;box-shadow:none!important;text-shadow:none!important;animation:none!important;transition:none!important}
+  .site-nav{position:static} .nav-burger,.skip-link,[data-motif-toggle]{display:none!important}
+  .js .reveal:not(.in){opacity:1!important;transform:none!important}
+  .sec-dark,.sec-dark *,.hero,.hero *,.snapshot,.snapshot *,footer,footer *{background-color:transparent!important;color:#111!important;border-color:#bbb!important}
+  .sec-white,.sec-tint,.sec-dark,footer{background-color:#fff!important;border-top:1px solid #bbb}
+  .btn{background:transparent!important;color:#111!important;border-color:#111!important}
+  .table-scroll{overflow:visible;background:#fff!important}
+  main>section{padding:28px 0}
+}
+/* forced colors: the UA repaints every band to Canvas, so bands get a system seam instead */
+@media (forced-colors:active){
+  .sec-white,.sec-tint,.sec-dark,footer{background-image:none;border-top:1px solid CanvasText}
+  .btn{border-color:ButtonText}
+  .nav-burger span{forced-color-adjust:none;background:CanvasText}
+  .table-scroll{border-color:CanvasText}
+}
+/* mc:nav (computed: the listing chip stops fitting beside logo + burger) */
+@media (max-width:389px){.nav-tick{display:none}}
+/* mc:layer */
+/* HeartBeam visible layer. Archetype: prospectus, set as an ECG report. Every part is a numbered folio (a big Poppins 200 numeral and one drawn beat) in a margin column beside a main column;
+   a printed margin rule runs between them. Display and figures are Poppins (a real face of the company's site) at weight 200 against 600; Montserrat is the body; JetBrains Mono carries labels, dates and citations only.
+   Signature: the 12-lead sheet (hero), the frontier line (cleared / not cleared), and one beat that marks every part.
+   Motion: every animated class contains "motif" so the reduced-motion rule and the pause toggle reach it; the BASE state of each is the finished drawing and the animations are gated behind .in. */
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);letter-spacing:-.02em}
+h1{font-weight:200;font-size:clamp(2.45rem,4.6vw,3.7rem);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+h1 b{font-weight:600;display:block;letter-spacing:-.03em}
+.nw{white-space:nowrap}
+.part h2{font-weight:300;font-size:clamp(1.95rem,3.9vw,3.1rem);line-height:1.08;max-width:21ch}
+.part h2 b{font-weight:600}
+h3{font-weight:600;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.2;letter-spacing:-.01em}
+h4{font-weight:600;font-size:1.05rem;line-height:1.25}
+.part .lead{margin-top:20px;max-width:64ch}
+.src-l{font:500 .66rem/1 var(--mono);letter-spacing:.03em;color:var(--accent-ink);text-decoration:underline;text-decoration-color:oklch(0.46 0.187 27 / .35);text-underline-offset:3px;white-space:nowrap;padding:0 .1em}
+.src-l:hover{text-decoration-color:currentColor}
+.src-note{margin-top:18px;font-size:.8rem;line-height:1.65;color:var(--text-mid);max-width:78ch}
+.sec-dark .src-l{color:var(--accent-lt);text-decoration-color:oklch(0.86 0.075 27 / .4)}
+.gc .src-l{color:var(--accent-lt);text-decoration-color:oklch(0.86 0.075 27 / .4)}
+
+/* ---------- hero ---------- */
+.sec-hero{position:relative;padding-top:clamp(26px,4vw,44px);padding-bottom:clamp(48px,7vw,92px)}
+.hero-meta{display:grid;grid-template-columns:auto auto minmax(0,1.3fr) auto;gap:0 clamp(18px,3vw,44px);border-top:2px solid var(--ink);border-bottom:1px solid var(--line);margin:0 0 clamp(30px,4.5vw,56px);font-family:var(--mono)}
+.hero-meta>div{padding:10px 0 11px}
+.hero-meta dt{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mid)}
+.hero-meta dd{font-size:.72rem;letter-spacing:.04em;color:var(--ink);font-weight:500;margin-top:3px;line-height:1.4}
+.hero-grid{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,9fr);gap:clamp(30px,5vw,76px);align-items:start}
+.hero-copy .lead{margin-top:24px;max-width:58ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-facts{display:grid;gap:0;border-top:2px solid var(--ink)}
+.hf{display:grid;grid-template-columns:132px minmax(0,1fr);gap:6px 18px;align-items:baseline;padding:15px 0 16px;border-bottom:1px solid var(--line)}
+.hf-v{font:200 clamp(2.1rem,3.2vw,2.8rem)/1 var(--serif);letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
+.hf-k{font-size:.82rem;line-height:1.55;color:var(--text-mid)}
+
+/* ---------- the 12-lead sheet ---------- */
+.sheet{margin:clamp(34px,5vw,60px) 0 0}
+.sheet-svg{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 1px 0 var(--line),0 22px 50px oklch(0.4 0.06 27 / .11)}
+.sheet-m{display:none}
+.sheet-cap{margin-top:16px;font-size:.84rem;line-height:1.6;color:var(--text-mid);max-width:84ch}
+.sheet-cap b{color:var(--ink);font-weight:600}
+.sh-paper{fill:var(--ecg-paper)}
+.g-minor{stroke:var(--ecg-minor)} .g-major{stroke:var(--ecg-major)}
+.sh-edge{stroke:oklch(0.7 0.11 27 / .6);stroke-width:1}
+.sh-k{font:500 11px var(--mono);letter-spacing:.13em;fill:var(--ink)}
+.sh-k2{font-weight:400;font-size:10px;letter-spacing:.09em;fill:oklch(0.4 0.03 281)}
+.sh-kn{font:500 10px var(--mono);letter-spacing:.14em;fill:oklch(0.9 0.04 27)}
+.sh-lead{font:600 13px var(--mono);fill:var(--ink)}
+.sh-rec{fill:var(--accent-ink)}
+.ld-box{fill:oklch(1 0 0 / .6);stroke:oklch(0.7 0.11 27 / .55);stroke-width:1;transition:fill .25s var(--ease),stroke .25s var(--ease)}
+.ld:hover .ld-box{fill:oklch(1 0 0 / .92);stroke:var(--accent)}
+.sh-line,.sh-rec-line{fill:none;stroke-linejoin:round;stroke-linecap:round}
+.sh-line{stroke:var(--ink);stroke-width:1.5}
+.sh-rec-line{stroke:var(--accent);stroke-width:2.1}
+.sh-mat{fill:var(--deep)}
+.sh-M{font:200 46px var(--serif);fill:#fff}
+.sh-flow{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:4 5}
+.sh-arw{fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sh-scan{fill:var(--accent)}
+.motif-trace{stroke-dasharray:1;stroke-dashoffset:0}
+.motif-scan{transform:translateX(0)}
+.sheet.in .motif-trace{animation:motif-draw 1.5s var(--ease) both;animation-delay:calc(var(--i) * .07s)}
+.sheet.in .motif-scan{animation:motif-sweep 8.5s linear 1.7s infinite}
+.motif-flow{animation:motif-flow 1.3s linear infinite}
+#hero-motif.paused *{animation-play-state:paused!important}
+@keyframes motif-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes motif-sweep{from{transform:translateX(0)}to{transform:translateX(712px)}}
+@keyframes motif-flow{to{stroke-dashoffset:-18}}
+@keyframes motif-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.1);opacity:0}}
+@keyframes motif-march{to{stroke-dashoffset:-26}}
+
+/* ---------- parts: a folio in the margin, the argument beside it ---------- */
+.part-grid{--fw:210px;--gap:clamp(26px,4.6vw,76px);position:relative;display:grid;grid-template-columns:minmax(150px,var(--fw)) minmax(0,1fr);column-gap:var(--gap);align-items:start}
+.part-grid::before{content:'';position:absolute;top:6px;bottom:0;left:calc(min(var(--fw),22vw) + var(--gap) / 2);width:1px;background:var(--line)}
+.sec-dark .part-grid::before{background:var(--line-d)}
+.folio{position:sticky;top:112px;align-self:start;display:flex;flex-direction:column;gap:6px;padding-top:4px}
+.folio-n{font:200 clamp(3.5rem,6.2vw,5.8rem)/.88 var(--serif);letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
+.beat{width:84px;height:28px;margin:8px 0 10px;overflow:visible}
+.beat path{fill:none;stroke:var(--accent);stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.motif-beat{stroke-dasharray:1;stroke-dashoffset:0}
+.folio.in .motif-beat{animation:motif-draw 1.1s var(--ease) both}
+.folio-k{font:600 .72rem/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink)}
+.folio-basis{font:400 .66rem/1.55 var(--mono);color:var(--text-mid);max-width:21ch}
+.sec-dark .folio-n{color:#fff}
+.sec-dark .folio-k{color:var(--accent-lt)}
+.sec-dark .folio-basis{color:oklch(0.8 0.02 281)}
+.sec-dark .beat path{stroke:var(--accent-lt)}
+.sec-dark h2,.sec-dark h3{color:#fff}
+.sec-dark .lead{color:oklch(0.86 0.012 281)}
+
+/* ---------- I the gap ---------- */
+.stat-row{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(18px,3vw,40px);margin-top:36px}
+.stat{border-top:2px solid var(--ink);padding-top:14px}
+.stat-v{display:block;font:200 clamp(2.5rem,4.4vw,3.8rem)/1 var(--serif);letter-spacing:-.035em;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat-k{display:block;margin-top:10px;font-size:.84rem;line-height:1.6;color:var(--text-mid)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3.4vw,48px);margin-top:38px}
+.two p{max-width:none;font-size:.92rem;color:var(--text)}
+
+/* ---------- II technology ---------- */
+.tech-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:32px}
+.spec-wrap{display:grid;grid-template-columns:minmax(104px,.62fr) minmax(0,1.38fr);gap:18px;align-items:center}
+.render img{width:100%;height:auto;mix-blend-mode:multiply}
+.render figcaption{font:400 .62rem/1.5 var(--mono);color:var(--text-mid);margin-top:2px}
+.specs{display:grid;border-top:2px solid var(--ink)}
+.specs>div{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.specs dt{font:500 .64rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);padding-top:2px}
+.specs dd{font-size:.84rem;line-height:1.5;color:var(--text)}
+.fig img{width:100%;height:auto;border-radius:12px;box-shadow:0 20px 44px oklch(0.3 0.04 281 / .16)}
+.fig figcaption{font:400 .66rem/1.55 var(--mono);color:var(--text-mid);margin-top:12px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.4vw,32px);margin-top:50px;border-top:2px solid var(--ink)}
+.steps li{display:flex;flex-direction:column;gap:6px;padding-top:16px}
+.step-n{font:500 .72rem var(--mono);letter-spacing:.14em;color:var(--accent-ink)}
+.steps b{font:600 1.02rem/1.25 var(--serif);color:var(--ink)}
+.steps span:not(.step-n){font-size:.84rem;line-height:1.6;color:var(--text-mid)}
+.diff-head{margin-top:56px}
+.diff-head h3{font-weight:300;font-size:clamp(1.3rem,2.4vw,1.8rem)}
+.diffs{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px);margin-top:14px}
+.diffs li{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:20px 0 22px;border-top:1px solid var(--line)}
+.diff-n{font:200 2.5rem/1 var(--serif);letter-spacing:-.03em;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.diffs h3{margin-bottom:6px}
+.diffs p{font-size:.86rem;line-height:1.62;color:var(--text-mid)}
+
+/* ---------- III cleared and not cleared ---------- */
+.frontier{margin:38px 0 6px}
+.frontier-svg{display:block;width:100%;height:auto;overflow:visible}
+.fr-m{display:none}
+.fr-base{stroke:oklch(1 0 0 / .12);stroke-width:1;fill:none}
+.fr-solid{fill:none;stroke:var(--accent-lt);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.fr-dash{fill:none;stroke:oklch(0.86 0.075 27 / .62);stroke-width:2.2;stroke-dasharray:6 7;stroke-linecap:round;stroke-linejoin:round}
+.fr-line{stroke:oklch(1 0 0 / .3);stroke-width:1;stroke-dasharray:3 5;fill:none}
+.fr-ring{fill:var(--deep);stroke:var(--accent-lt);stroke-width:2.6}
+.fr-pulse{fill:none;stroke:var(--accent-lt);stroke-width:1.6;transform-box:fill-box;transform-origin:center}
+.motif-pulse{animation:motif-pulse 3s var(--ease) infinite}
+.motif-march{animation:motif-march 1.6s linear infinite}
+.frontier-k{display:grid;grid-template-columns:54.2% minmax(0,1fr);gap:8px 0;margin-top:8px;font:400 .68rem/1.5 var(--mono);letter-spacing:.04em;color:oklch(0.84 0.014 281)}
+.frontier-k span{display:inline-flex;align-items:center;gap:10px}
+.frontier-k .k-mid{grid-column:1 / -1;order:3;color:oklch(0.78 0.02 281)}
+.k-solid,.k-dash{display:inline-block;width:30px;height:0;border-top:2.6px solid var(--accent-lt)}
+.k-dash{border-top:2.2px dashed oklch(0.86 0.075 27 / .7)}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4.4vw,64px);margin-top:42px}
+.cols2 h3{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.tag{display:inline-block;font:600 .64rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:99px}
+.tag-ok{background:var(--accent-lt);color:var(--deep)}
+.tag-no{border:1.6px dashed oklch(0.86 0.075 27 / .75);color:var(--accent-lt)}
+.led{list-style:none;margin-top:16px}
+.led li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:6px 16px;padding:15px 0;border-top:1px solid var(--line-d)}
+.led time,.led-k{font:500 .7rem/1.5 var(--mono);letter-spacing:.06em;color:var(--accent-lt)}
+.led-k{text-transform:uppercase;letter-spacing:.1em;color:#fff}
+.led p{font-size:.88rem;line-height:1.65;color:oklch(0.86 0.012 281);max-width:none}
+.indic{margin-top:16px;padding:20px 22px;border-radius:10px;background:oklch(1 0 0 / .055)}
+.indic p{font:300 1.02rem/1.55 var(--serif);color:#fff;max-width:none}
+.indic .indic-s{margin-top:12px;font:400 .8rem/1.6 var(--sans);color:oklch(0.82 0.014 281)}
+
+/* ---------- IV evidence: the ledger ---------- */
+.part .table-scroll{margin-top:30px}
+table.ledger{min-width:900px;font-size:.84rem}
+table.ledger tbody tr:last-child th{border-bottom:none}
+table.ledger caption{font-family:var(--mono)}
+table.ledger th,table.ledger td{vertical-align:top;line-height:1.6;padding:15px 18px}
+table.ledger tbody th[scope="row"]{font:600 .95rem/1.3 var(--serif);color:var(--ink);white-space:nowrap;background:var(--card)}
+table.ledger td{color:var(--text)}
+.rowtag{display:block;font:400 .6rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-top:5px;white-space:normal}
+
+/* ---------- V direction ---------- */
+.prio{list-style:none;margin-top:38px;border-top:2px solid var(--ink)}
+.prio li{display:grid;grid-template-columns:clamp(54px,7vw,92px) minmax(0,1fr);gap:18px;padding:22px 0 24px;border-bottom:1px solid var(--line)}
+.prio-n{font:200 clamp(3rem,5.4vw,4.6rem)/.9 var(--serif);letter-spacing:-.04em;color:var(--ink);font-variant-numeric:tabular-nums}
+.prio h3{margin-bottom:6px}
+.prio p{font-size:.9rem;line-height:1.65;color:var(--text-mid);max-width:70ch}
+.launch{margin-top:44px;padding:clamp(20px,3vw,32px);border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.launch h3{font-weight:300;font-size:clamp(1.25rem,2.2vw,1.6rem);margin-bottom:6px}
+.launch-l>div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;padding:13px 0;border-top:1px solid var(--line)}
+.launch-l dt{font:500 .66rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);padding-top:3px}
+.launch-l dd{font-size:.86rem;line-height:1.65;color:var(--text)}
+
+/* ---------- VI financials ---------- */
+.chart{margin:40px 0 0;padding:clamp(18px,2.6vw,28px);background:var(--card);border:1px solid var(--line);border-radius:12px}
+.chart-t{font:500 1.15rem/1.2 var(--serif);color:var(--ink)}
+.chart-key{display:flex;flex-wrap:wrap;gap:6px 22px;margin:10px 0 22px;font:400 .68rem/1.4 var(--mono);color:var(--text-mid);max-width:none}
+.chart-key span{display:inline-flex;align-items:center;gap:8px}
+.chart-u{margin-left:auto}
+.kb-loss,.kb-cash{display:inline-block;width:12px;height:12px;border-radius:2px}
+.kb-loss{background:var(--ink)} .kb-cash{background:var(--accent)}
+.chart-plot{display:grid;grid-template-columns:34px minmax(0,1fr);height:292px;padding-bottom:44px;--ax:24}
+.chart-axis{position:relative}
+.chart-axis span{position:absolute;right:8px;top:calc((24 - var(--y)) / 24 * 100%);transform:translateY(-50%);font:400 .64rem var(--mono);color:var(--text-mid)}
+.chart-groups{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 clamp(4px,1.6vw,22px);border-top:1px solid var(--line);background-image:linear-gradient(to top,var(--line) 0 1px,transparent 1px);background-size:100% 33.3333%;background-repeat:repeat-y;background-position:0 0}
+.grp{position:relative;height:100%}
+.bars{display:flex;align-items:flex-end;justify-content:center;gap:5px;height:100%}
+.bar{display:block;position:relative;width:clamp(13px,3.2vw,38px);height:calc(var(--v) / var(--ax) * 100%);min-height:1px}
+.b-loss{background:var(--ink)} .b-cash{background:var(--accent)}
+.bar b{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);padding:0 2px 5px;background-color:var(--card);font:600 .68rem/1 var(--serif);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.grp-l{position:absolute;top:calc(100% + 12px);left:-4px;right:-4px;text-align:center;font:500 .7rem/1.3 var(--mono);color:var(--ink)}
+.grp-l small{display:block;font-size:.58rem;color:var(--text-mid);margin-top:2px}
+.chart-src{margin-top:12px;font-size:.76rem;line-height:1.65;color:var(--text-mid);max-width:none}
+.fin-cols{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:44px;align-items:start}
+table.cmp{min-width:0;font-size:.86rem}
+table.cmp th[scope="row"]{font-weight:500;color:var(--text);width:44%}
+table.cmp tbody tr:last-child th{border-bottom:none}
+table.cmp thead th.num,table.fin td.num{font-family:var(--serif);font-variant-numeric:tabular-nums;font-weight:500}
+table.cmp thead th.num{text-align:right}
+table.cmp .tot th,table.cmp .tot td{font-weight:700;border-top:2px solid var(--ink)}
+.fund h3,.shares h3{font-weight:300;font-size:clamp(1.25rem,2.2vw,1.6rem);margin-bottom:6px}
+.fund dl>div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.fund dt,.shares-l dt{font:500 .66rem/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);padding-top:3px}
+.fund dd{font-size:.84rem;line-height:1.65;color:var(--text)}
+.gc{margin-top:46px;padding:clamp(22px,3.2vw,38px);border-radius:14px;background-color:var(--deep);color:#fff}
+.gc-k{font:500 .66rem var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-lt)}
+.gc blockquote{margin-top:12px}
+.gc blockquote p{font:300 clamp(1.15rem,2.1vw,1.55rem)/1.4 var(--serif);color:#fff;max-width:60ch;letter-spacing:-.01em}
+.gc-s{margin-top:16px;font-size:.82rem;line-height:1.7;color:oklch(0.84 0.012 281);max-width:80ch}
+.shares{margin-top:46px}
+.shares-l>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.shares-l dd{font:500 1.02rem/1.5 var(--serif);color:var(--ink);font-variant-numeric:tabular-nums}
+.shares-l div:last-child dd{font:400 .84rem/1.65 var(--sans);color:var(--text)}
+
+/* ---------- VII the record ---------- */
+.cal{list-style:none;margin-top:30px;border-top:2px solid var(--ink)}
+.cal li{display:grid;grid-template-columns:128px 84px minmax(0,1fr);gap:4px 20px;padding:16px 0 17px;border-bottom:1px solid var(--line)}
+.cal time{font:500 .76rem/1.5 var(--mono);letter-spacing:.03em;color:var(--ink)}
+.cal-t{font:500 .62rem/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.cal p{font-size:.88rem;line-height:1.65;color:var(--text);max-width:none}
+
+/* ---------- VIII disclosures ---------- */
+.disc{list-style:none;margin-top:34px;border-top:3px solid oklch(1 0 0 / .9)}
+.disc li{display:grid;grid-template-columns:clamp(60px,9vw,116px) minmax(0,1fr);gap:clamp(14px,2vw,26px);padding:26px 0 28px;border-bottom:1px solid var(--line-d)}
+.disc-n{font:200 clamp(2.5rem,5.2vw,4.4rem)/.9 var(--serif);letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}
+.disc h3{margin-bottom:8px;font-size:clamp(1.1rem,1.8vw,1.35rem)}
+.disc p{font-size:.92rem;line-height:1.72;color:oklch(0.87 0.012 281);max-width:68ch}
+
+/* ---------- IX people and contact ---------- */
+.people{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;margin-top:30px;border-top:2px solid var(--ink)}
+.people li{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.mono-i{flex:none;display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--tint-2);color:var(--accent-ink);font:600 .82rem var(--mono);letter-spacing:.06em}
+.people b{display:block;font:600 1rem/1.25 var(--serif);color:var(--ink)}
+.people span:not(.mono-i){display:block;font-size:.8rem;line-height:1.5;color:var(--text-mid);margin-top:2px}
+.alerts{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;margin-top:40px;padding:clamp(20px,3vw,30px);border-radius:12px;background:var(--tint);border:1px solid var(--tint-2)}
+.alerts h3{font-weight:600;margin-bottom:4px}
+.alerts p{font-size:.86rem;color:var(--text-mid)}
+.alerts-cta{display:flex;flex-wrap:wrap;gap:10px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:34px}
+.contact-grid h3{font:500 .66rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:8px}
+.contact-grid p{font-size:.88rem;line-height:1.7;color:var(--text)}
+.contact-grid a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- footer ---------- */
+.footer-top{display:flex;justify-content:space-between;align-items:center;gap:22px 32px;flex-wrap:wrap;padding-bottom:28px;margin-bottom:6px;border-bottom:1px solid var(--line-d)}
+.footer-logo{display:inline-flex;background-color:var(--paper);padding:12px 18px;border-radius:10px}
+.footer-logo img{width:190px;height:auto}
+.footer-links{display:flex;flex-wrap:wrap;gap:4px 26px;list-style:none}
+.footer-links a{font-size:.84rem;color:oklch(0.86 0.012 281);text-decoration:underline;text-decoration-color:oklch(1 0 0 / .25);text-underline-offset:4px}
+.footer-links a:hover{color:#fff;text-decoration-color:currentColor}
+footer .fls a{color:inherit}
+
+/* ---------- responsive ---------- */
+@media (max-width:1060px){
+  .hero-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:6px}
+}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .part-grid{grid-template-columns:minmax(0,1fr);row-gap:22px}
+  .part-grid::before{display:none}
+  .folio{position:static;display:grid;grid-template-columns:auto 1fr;grid-template-areas:'n k' 'n b';column-gap:20px;align-items:center}
+  .folio-n{grid-area:n}
+  .folio .beat{display:none}
+  .folio-k{grid-area:k;align-self:end}
+  .folio-basis{grid-area:b;max-width:none;align-self:start}
+  .tech-row,.cols2,.fin-cols{grid-template-columns:minmax(0,1fr)}
+  .fin-cols>*,.cols2>*,.tech-row>*{min-width:0}
+  .part h2{max-width:none}
+  .diffs{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .sheet-d{display:none} .sheet-m{display:block}
+  .fr-d{display:none} .fr-m{display:block}
+  .stat-row,.two,.people,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .stat{margin-bottom:6px}
+  .spec-wrap{grid-template-columns:96px minmax(0,1fr)}
+  .alerts{grid-template-columns:minmax(0,1fr)}
+  table.ledger{min-width:0}
+  table.ledger thead{position:absolute;left:-9999px}
+  table.ledger caption{display:block;width:100%}
+  table.ledger,table.ledger tbody,table.ledger tr,table.ledger th,table.ledger td{display:block;width:100%}
+  table.ledger tr{padding:16px 16px 10px;border-bottom:1px solid var(--line)}
+  table.ledger tbody tr:last-child{border-bottom:none}
+  table.ledger th,table.ledger td{padding:5px 0;border:0}
+  table.ledger tbody th[scope="row"]{white-space:normal;background:none;padding-bottom:6px}
+  table.ledger td::before{content:attr(data-label);display:block;font:500 .6rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:2px}
+  .cal li{grid-template-columns:auto 1fr;gap:2px 14px}
+  .cal li p{grid-column:1 / -1}
+  .launch-l>div,.fund dl>div,.shares-l>div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .led li{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+@media (max-width:560px){
+  table.cmp{font-size:.8rem}
+  table.cmp th,table.cmp td{padding:11px 8px}
+  table.cmp caption{padding:12px 8px;letter-spacing:.02em}
+  .hero-meta{grid-template-columns:1fr 1fr;gap:0 18px}
+  .hf{grid-template-columns:minmax(0,1fr);gap:4px}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .chart-plot{height:250px;padding-bottom:50px}
+  .bar b{writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);padding-bottom:4px;font-size:.62rem}
+  .grp-l{font-size:.6rem;left:-2px;right:-2px}
+  .grp-l small{font-size:.5rem}
+  .diffs li{grid-template-columns:48px 1fr}
+  .disc li{grid-template-columns:54px 1fr}
+  .part-grid{row-gap:18px}
+  .chart-u{margin-left:0;flex-basis:100%}
+}
+@media print{
+  .sec-hero{background:#fff!important;color:#111!important}
+  .gc{background:#fff!important;color:#111!important;border:1px solid #bbb}
+  .gc *{color:#111!important}
+  .sheet-svg{box-shadow:none}
+  .sheet-m{display:none}.sheet-d{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  .sheet.in .motif-trace,.sheet.in .motif-scan,.folio.in .motif-beat{animation:none!important}
+  .motif-scan{display:none}
+}
+
+/* =====================================================================================================
+   Design pass: bolder (impeccable, brand register). A CSS-only override block; copy and data untouched.
+   Focal point: the headline, now across the full wrap at 6.1rem over the sheet. Scale jumps of 3-5x between numerals and labels.
+   Real hues only; no new effect classes; hover states move colour or position, never layout; the disclosures band is not touched.
+   Each rule that was set in an earlier @media block restates its narrow case here, because a later equal-specificity rule wins.
+   ===================================================================================================== */
+
+/* ---------- hero: the headline owns the width, the lead and the four facts sit beneath it ---------- */
+h1{font-size:clamp(2.6rem,7.3vw,6.1rem);line-height:.98;letter-spacing:-.04em}
+h1 b{letter-spacing:-.035em}
+.hero-grid{grid-template-columns:minmax(0,13fr) minmax(0,9fr);grid-template-rows:auto auto auto 1fr;grid-template-areas:"eye eye" "h1 h1" "lead facts" "cta facts";row-gap:0}
+.hero-copy{display:contents}
+.hero-copy>.eyebrow{grid-area:eye;margin-bottom:22px}
+.hero-copy>h1{grid-area:h1;margin-bottom:clamp(28px,3.6vw,48px)}
+.hero-copy>.lead{grid-area:lead;margin-top:0}
+.hero-copy>.hero-cta{grid-area:cta;align-self:start}
+.hero-facts{grid-area:facts}
+.hf{transition:background-color .3s var(--ease)}
+.hf-v{transition:color .3s var(--ease)}
+.hf:hover .hf-v{color:var(--accent-ink)}
+/* the sheet is one printout on a stack: a second sheet's edge and fill show behind it, offset down and right (two stacked shadows, so it ends where the sheet ends) */
+.sheet-svg{box-shadow:9px 11px 0 -1px var(--ecg-paper),9px 11px 0 0 oklch(0.7 0.11 27 / .4),0 1px 0 var(--line),0 26px 56px oklch(0.4 0.06 27 / .12)}
+
+/* ---------- parts: more air, a larger margin numeral, a lighter display weight against the 600 ---------- */
+.part{padding-block:clamp(64px,9vw,136px)}
+.folio-n{font-size:clamp(4.4rem,9.4vw,8.4rem);line-height:.8;letter-spacing:-.05em}
+.beat{width:104px;height:34px;margin:14px 0 14px}
+.part h2{font-weight:200;font-size:clamp(2.15rem,4.7vw,3.95rem);line-height:1.04;letter-spacing:-.035em;max-width:19ch}
+.part h2 b{font-weight:600}
+.part.sec-dark h2{font-weight:300}
+
+/* ---------- 1 the gap: an asymmetric row, the first figure far larger than the other two ---------- */
+.stat-row{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr)}
+.stat{transition:border-color .3s var(--ease)}
+.stat:hover{border-top-color:var(--accent)}
+.stat-v{font-size:clamp(3rem,6vw,5.2rem);letter-spacing:-.045em}
+.stat:first-child .stat-v{font-size:clamp(3.6rem,9vw,8rem)}
+
+/* ---------- 2 technology: numerals that move a few pixels on hover ---------- */
+.diffs li{grid-template-columns:78px minmax(0,1fr)}
+.diff-n{font-size:3.4rem;transition:transform .35s var(--ease)}
+.diffs li:hover .diff-n{transform:translateX(5px)}
+
+/* ---------- 4 evidence: the ledger answers the pointer; study names read as names ---------- */
+table.ledger thead th{font:600 .62rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-mid)}
+table.ledger tbody th[scope="row"]{font-size:1.12rem;background:transparent}
+table.ledger tbody tr{transition:background-color .3s var(--ease)}
+table.ledger tbody tr:hover{background-color:oklch(0.975 0.01 281)}
+
+/* ---------- 5 direction: the priority numerals are the headline of each row ---------- */
+.prio li{grid-template-columns:clamp(72px,9.5vw,132px) minmax(0,1fr)}
+.prio-n{font-size:clamp(3.8rem,7.4vw,6.6rem);transition:color .3s var(--ease)}
+.prio li:hover .prio-n{color:var(--accent-ink)}
+
+/* ---------- 6 financials: the six-month loss bar is hatched, because it covers half the period of the others ---------- */
+.grp:last-child .b-loss{background-image:repeating-linear-gradient(135deg,transparent 0 5px,oklch(1 0 0 / .3) 5px 6px)}
+
+/* ---------- 7 the record: a spine with a node per entry; the newest node is filled ---------- */
+.cal{position:relative}
+.cal::before{content:'';position:absolute;top:0;bottom:0;left:calc(128px + 20px + 84px + 9.5px);width:1px;background:var(--line)}
+.cal li{position:relative;transition:background-color .3s var(--ease)}
+.cal li::before{content:'';position:absolute;left:calc(128px + 20px + 84px + 4.5px);top:23px;width:10px;height:10px;border-radius:50%;background-color:var(--tint);border:2px solid var(--accent)}
+.cal li:first-child::before{background-color:var(--accent)}
+.cal li:hover{background-color:oklch(1 0 0 / .45)}
+.cal time{font:600 1.02rem/1.35 var(--serif);letter-spacing:-.01em}
+
+/* ---------- 3 and 8: the frontier trace and the disclosure numerals take more weight ---------- */
+.fr-solid{stroke-width:3}
+.fr-dash{stroke-width:2.4}
+.disc li{grid-template-columns:clamp(72px,11vw,150px) minmax(0,1fr)}
+.disc-n{font-size:clamp(3.2rem,6.8vw,5.8rem)}
+
+/* ---------- 9 people ---------- */
+.mono-i{transition:background-color .3s var(--ease),color .3s var(--ease)}
+.people li:hover .mono-i{background-color:var(--accent-ink);color:#fff}
+
+/* ---------- narrow screens: restate every changed rule ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"eye" "h1" "lead" "cta" "facts"}
+  .hero-facts{margin-top:30px}
+  .part{padding-block:clamp(60px,8vw,96px)}
+  .part h2{max-width:none}
+  .folio-n{font-size:clamp(4rem,12vw,5.6rem)}
+  .sheet-svg{box-shadow:6px 8px 0 -1px var(--ecg-paper),6px 8px 0 0 oklch(0.7 0.11 27 / .4),0 1px 0 var(--line),0 18px 40px oklch(0.4 0.06 27 / .1)}
+}
+@media (max-width:760px){
+  .stat-row{grid-template-columns:minmax(0,1fr)}
+  .cal::before,.cal li::before{display:none}
+  .cal time{font-size:.98rem}
+}
+@media (max-width:560px){
+  .diffs li{grid-template-columns:52px minmax(0,1fr)}
+  .diff-n{font-size:2.6rem}
+  .prio li{grid-template-columns:56px minmax(0,1fr)}
+  .prio-n{font-size:3.2rem}
+  .disc li{grid-template-columns:60px minmax(0,1fr)}
+  .disc-n{font-size:2.7rem}
+  .beat{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .hf,.hf-v,.stat,.diff-n,.prio-n,.mono-i,.cal li,table.ledger tbody tr{transition:none}
+  .diffs li:hover .diff-n{transform:none}
+}
+
+/* tablet widths: the six-month table and the funding ledger stack instead of squeezing the table into a scroller */
+@media (max-width:1100px){
+  .fin-cols{grid-template-columns:minmax(0,1fr)}
+}
+/* mc:surface */
+/* HeartBeam surface system. Derived from the page's own subject: an ECG report sheet. Each stock is a different part of one printed sheet.
+   - hero: the report's pale ground with two red fields, no ruling (the sheet figure carries the grid itself)
+   - white: a calibration ruler along the top edge (minor ticks every 10px, major every 50px), trim rules 11px inside each edge, a head wash that goes LAST
+   - white, ruled: margin ticks in the two gutters, every 28px, printed dark
+   - tint: BLIND WHITE ruling (a rule every 19px, a heavy one every 95px) in one tint, vertical blind columns in another, margin ticks in white in a third
+   - dark: negative ruling over a red field behind the frontier; the gravest band is its own darker stock with only a vignette and plain white lines, no colour
+   Polarity: printed dark marks on white stock, BLIND WHITE on tinted stock, negative marks on dark. No ruling sits behind a table (tables sit on --card). Do not reorder layers:
+   washes that are opaque (the head wash, the base falls) are LAST so they cannot hide the trim rules above them. */
+:root{
+  --tick:        oklch(0.30 0.02 281 / 0.30);
+  --tick-soft:   oklch(0.30 0.02 281 / 0.18);
+  --sheet-edge:  oklch(0.40 0.10 281 / 0.26);
+  --blind:       oklch(1 0 0 / 0.36);
+  --blind-k:     oklch(1 0 0 / 0.62);
+  --sheet-neg:   oklch(0.98 0.012 281 / 0.055);
+}
+
+.sec-hero{
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(58% 56% at 90% 4%, oklch(0.601 0.234 27 / 0.12), transparent 70%),
+    radial-gradient(40% 34% at 0% 62%, oklch(0.601 0.234 27 / 0.06), transparent 72%),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 600px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    0 0;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat;
+}
+
+.sec-white{
+  background-color:var(--paper);
+  background-image:
+    repeating-linear-gradient(90deg, var(--tick) 0 1px, transparent 1px 50px),
+    repeating-linear-gradient(90deg, var(--tick) 0 1px, transparent 1px 10px),
+    linear-gradient(var(--sheet-edge),var(--sheet-edge)),
+    linear-gradient(var(--sheet-edge),var(--sheet-edge)),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 230px);
+  background-size:
+    min(1180px, 100% - 44px) 11px,
+    min(1180px, 100% - 44px) 5px,
+    1px 100%,
+    1px 100%,
+    100% 230px;
+  background-position:
+    center top,
+    center top,
+    11px 0,
+    calc(100% - 11px) 0,
+    0 0;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* margin-tick stock */
+.sec-white.sec-ruled{
+  background-color:var(--paper);
+  background-image:
+    repeating-linear-gradient(180deg, var(--tick) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(180deg, var(--tick) 0 1px, transparent 1px 28px),
+    linear-gradient(var(--sheet-edge),var(--sheet-edge)),
+    linear-gradient(var(--sheet-edge),var(--sheet-edge)),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 230px);
+  background-size:
+    10px 100%,
+    10px 100%,
+    1px 100%,
+    1px 100%,
+    100% 230px;
+  background-position:
+    6px 0,
+    calc(100% - 6px) 0,
+    11px 0,
+    calc(100% - 11px) 0,
+    0 0;
+  background-repeat:
+    repeat-y,
+    repeat-y,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* tint stock one: a blind white ledger, the polarity flip (dark ruling on a tint would cost contrast, white ruling adds it) */
+.sec-tint{
+  background-color:var(--tint);
+  background-image:
+    repeating-linear-gradient(180deg, var(--blind-k) 0 2px, transparent 2px 95px),
+    repeating-linear-gradient(180deg, var(--blind) 0 1px, transparent 1px 19px),
+    linear-gradient(var(--blind-k),var(--blind-k)),
+    linear-gradient(var(--blind-k),var(--blind-k));
+  background-size:
+    auto,
+    auto,
+    1px 100%,
+    1px 100%;
+  background-position:
+    0 0,
+    0 0,
+    11px 0,
+    calc(100% - 11px) 0;
+  background-repeat:
+    repeat,
+    repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* tint stock two: vertical blind columns and one soft red field in the corner */
+.sec-tint.sec-ruled-b{
+  background-color:var(--tint);
+  background-image:
+    radial-gradient(48% 62% at 100% 0%, oklch(0.601 0.234 27 / 0.055), transparent 70%),
+    repeating-linear-gradient(90deg, var(--blind-k) 0 2px, transparent 2px 380px),
+    repeating-linear-gradient(90deg, var(--blind) 0 1px, transparent 1px 95px),
+    linear-gradient(var(--blind-k),var(--blind-k)),
+    linear-gradient(var(--blind-k),var(--blind-k));
+  background-size:
+    100% 100%,
+    auto,
+    auto,
+    1px 100%,
+    1px 100%;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    11px 0,
+    calc(100% - 11px) 0;
+  background-repeat:
+    no-repeat,
+    repeat,
+    repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* tint stock three: margin ticks in white and a rule every 56px */
+.sec-tint.sec-ruled-c{
+  background-color:var(--tint);
+  background-image:
+    repeating-linear-gradient(180deg, var(--blind-k) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(180deg, var(--blind-k) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(180deg, var(--blind) 0 1px, transparent 1px 56px),
+    linear-gradient(var(--blind-k),var(--blind-k)),
+    linear-gradient(var(--blind-k),var(--blind-k));
+  background-size:
+    10px 100%,
+    10px 100%,
+    auto,
+    1px 100%,
+    1px 100%;
+  background-position:
+    6px 0,
+    calc(100% - 6px) 0,
+    0 0,
+    11px 0,
+    calc(100% - 11px) 0;
+  background-repeat:
+    repeat-y,
+    repeat-y,
+    repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* dark stock one: negative ruling over a red field behind the frontier line */
+.sec-dark.frontier-band{
+  background-color:var(--deep);
+  background-image:
+    radial-gradient(52% 64% at 60% 30%, oklch(0.601 0.234 27 / 0.2), transparent 70%),
+    repeating-linear-gradient(180deg, var(--sheet-neg) 0 1px, transparent 1px 28px),
+    linear-gradient(var(--sheet-neg),var(--sheet-neg)),
+    linear-gradient(var(--sheet-neg),var(--sheet-neg)),
+    linear-gradient(180deg, oklch(0.235 0.036 281) 0, var(--deep) 62%);
+  background-size:
+    100% 100%,
+    auto,
+    1px 100%,
+    1px 100%,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    11px 0,
+    calc(100% - 11px) 0,
+    0 0;
+  background-repeat:
+    no-repeat,
+    repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+}
+
+/* gravest band: its own stock, the darkest ink, a vignette and plain white lines every 56px; no colour field, no glow */
+.sec-dark.sec-dark-2{
+  background-color:var(--deep-2);
+  background-image:
+    radial-gradient(ellipse 130% 70% at 50% 0%, transparent 0, transparent 40%, oklch(0.09 0.02 281 / 0.7) 100%),
+    repeating-linear-gradient(180deg, oklch(1 0 0 / 0.055) 0 1px, transparent 1px 56px),
+    linear-gradient(oklch(1 0 0 / 0.07),oklch(1 0 0 / 0.07)),
+    linear-gradient(oklch(1 0 0 / 0.07),oklch(1 0 0 / 0.07));
+  background-size:
+    100% 100%,
+    auto,
+    1px 100%,
+    1px 100%;
+  background-position:
+    0 0,
+    0 0,
+    11px 0,
+    calc(100% - 11px) 0;
+  background-repeat:
+    no-repeat,
+    repeat,
+    no-repeat,
+    no-repeat;
+}
+
+footer{
+  background-color:var(--deep-2);
+  background-image:
+    linear-gradient(90deg, var(--accent), var(--accent-lt)),
+    linear-gradient(180deg, transparent 0, oklch(0.115 0.026 281) 100%);
+  background-size:
+    100% 2px,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0;
+  background-repeat:
+    no-repeat,
+    no-repeat;
+}
+
+.table-scroll{background:var(--card)}   /* table cells are transparent; never paint a band behind data */
+
+@media print{
+  .sec-hero,.sec-white,.sec-tint,.sec-dark,footer{background-image:none}
+  .sec-dark,footer{background-color:#fff!important;color:#111!important}
+  .sec-dark *,footer *{color:#111!important}
+}
+@media (forced-colors:active){
+  /* background-image is dropped here too; the bands keep their system colours and the ruling simply disappears */
+  .sec-hero,.sec-white,.sec-tint,.sec-dark,footer{background-image:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Independent design concept. Not affiliated with HeartBeam, Inc. Official investor relations: <a href="https://ir.heartbeam.com/" target="_blank" rel="noopener">ir.heartbeam.com</a></div>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#hero"><span class="nav-logo"><img src="img/logo.png" alt="HeartBeam" width="238" height="42"></span><span class="nav-tick">Nasdaq: BEAT</span></a>
+    <nav aria-label="Primary">
+      <button class="nav-burger" id="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#cleared">Cleared</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#direction">Direction</a></li>
+        <li><a href="#financials">Financials</a></li>
+        <li><a href="#record">Record</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a class="btn btn-primary" href="#contact">Contact IR <span class="arw" aria-hidden="true">-&gt;</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ============ 00 HERO (light, ECG sheet): identity in the company's own terms, the one cleared fact, the one not-cleared fact, then the 12-lead sheet that draws the mechanism. The report header strip carries the as-of basis. ============ -->
+<section id="hero" class="hero sec-hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <dl class="hero-meta reveal" aria-label="Report header">
+      <div><dt>Issuer</dt><dd>HeartBeam, Inc.</dd></div>
+      <div><dt>Listing</dt><dd>Nasdaq: BEAT</dd></div>
+      <div><dt>Basis</dt><dd>10-Q for Jun&nbsp;30, 2026; 8-Ks to Aug&nbsp;14; company releases to Oct&nbsp;5, 2026</dd></div>
+      <div><dt>Status</dt><dd>No revenue; going-concern doubt</dd></div>
+    </dl>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">HeartBeam, Inc. &middot; Cardiac monitoring</p>
+        <h1 id="hero-h" class="reveal" style="--d:.05s">Three directions in. <b>A <span class="nw">twelve-lead</span> ECG out.</b></h1>
+        <p class="lead reveal" style="--d:.1s">HeartBeam makes a credit-card-sized ECG recorder that captures the heart&rsquo;s electrical signal from three non-coplanar directions and synthesizes a 12-lead ECG from it. The FDA has cleared the system for arrhythmia assessment, and only that. Management now calls heart attack detection its first priority, an indication that is not cleared. The company has no revenue, and its filings state substantial doubt about its ability to continue as a going concern. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, Note 2</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p>
+        <div class="hero-cta reveal" style="--d:.15s">
+          <a class="btn btn-primary" href="#disclosures">Read the disclosures <span class="arw" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" href="https://ir.heartbeam.com/" target="_blank" rel="noopener">Official investor site <span class="arw" aria-hidden="true">&nearr;</span></a>
+          <button class="btn btn-ghost hero-pause" type="button" data-motif-toggle>Pause motion</button>
+        </div>
+      </div>
+      <div class="hero-facts reveal" style="--d:.18s">
+        <div class="hf">
+          <span class="hf-v">2</span>
+          <span class="hf-k">FDA 510(k) clearances, both for arrhythmia assessment: the recorder in December 2024 and the 12-lead synthesis software in December 2025, after an appeal of a November 2025 Not Substantially Equivalent letter <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390025113353/ea0266730-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Nov&nbsp;21, 2025</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/107/heartbeam-receives-fda-clearance-for-first-ever-cable-free" target="_blank" rel="noopener">Dec&nbsp;10, 2025 release</a></span>
+        </div>
+        <div class="hf">
+          <span class="hf-v">93.4%</span>
+          <span class="hf-k">overall diagnostic agreement the company reports for its VALID-ECG pivotal study (198 patients, five US sites), synthesized 12-lead against a standard 12-lead, for manual detection of arrhythmias <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Clinical Data</a></span>
+        </div>
+        <div class="hf">
+          <span class="hf-v">$8.7M</span>
+          <span class="hf-k">cash at Jun&nbsp;30, 2026, after about $11.5M gross raised in April and May; operating cash used in the first half was $7.0M <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></span>
+        </div>
+        <div class="hf">
+          <span class="hf-v">$0</span>
+          <span class="hf-k">revenue in the first half of 2026 and in 2025: the filings say the system &ldquo;did not generate any revenue&rdquo; <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, Note 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></span>
+        </div>
+      </div>
+    </div>
+    <figure id="hero-motif" class="sheet reveal" style="--d:.2s">
+      <!-- generated by gen_sheet.mjs: a parametric beat drawn per lead; schematic, not data -->
+<svg class="sheet-svg sheet-d" viewBox="0 0 1180 612" role="img" aria-labelledby="sheet-t" focusable="false"><title id="sheet-t">A schematic 12-lead ECG report sheet: three recorded directions pass through a personalized transformation matrix and fill the standard twelve-lead layout</title><defs>
+  <pattern id="shg1" width="10" height="10" patternUnits="userSpaceOnUse"><path class="g-minor" d="M10 0H0V10" fill="none" stroke-width=".6"/></pattern>
+  <pattern id="shg5" width="50" height="50" patternUnits="userSpaceOnUse"><path class="g-major" d="M50 0H0V50" fill="none" stroke-width="1"/></pattern>
+  <linearGradient id="shtrail" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="var(--accent)" stop-opacity="0"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".22"/></linearGradient>
+</defs><rect class="sh-paper" width="1180" height="612" rx="10"/><rect width="1180" height="612" rx="10" fill="url(#shg1)"/><rect width="1180" height="612" rx="10" fill="url(#shg5)"/><rect class="sh-edge" x=".5" y=".5" width="1179" height="611" rx="10" fill="none"/><text class="sh-k" x="24" y="40">RECORDED</text><text class="sh-k sh-k2" x="24" y="58">THREE DIRECTIONS</text><text class="sh-k" x="352" y="40" text-anchor="middle">MATRIX</text><text class="sh-k" x="428" y="40">SYNTHESIZED 12-LEAD DISPLAY</text><text class="sh-k sh-k2" x="428" y="58">STANDARD LAYOUT, 3 ROWS BY 4 COLUMNS</text><g class="ld"><rect class="ld-box" x="24" y="84" width="268" height="110" rx="5"/><text class="sh-lead sh-rec" x="34" y="102">D1</text><path class="sh-rec-line motif-trace" style="--i:0" pathLength="1" d="M24 153.5l2 0.9 2 0.5 2 0.2 2 -0.2 2 -0.6 2 -0.8 2 -0.8 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.2 2 0.6 2 -2 2 -12.4 2 -10.6 2 11.7 2 14.4 2 1.8 2 -3.1 2 -1.4 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 0 2 0.5 2 0.8 2 1.1 2 1.2 2 1 2 0.9 2 0.5 2 0.2 2 -0.2 2 -0.6 2 -0.8 2 -0.8 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.2 2 0.6 2 -2 2 -12.4 2 -10.6 2 11.7 2 14.4 2 1.8 2 -3.1 2 -1.4 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 0 2 0.5 2 0.8 2 1.1 2 1.2 2 1 2 0.9 2 0.5 2 0.2 2 -0.2 2 -0.6 2 -0.8 2 -0.8 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.2 2 0.6 2 -2 2 -12.4 2 -10.6 2 11.7 2 14.4 2 1.8 2 -3.1 2 -1.4 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 0 2 0.5 2 0.8 2 1.1 2 1.2 2 1 2 0.9 2 0.5 2 0.2 2 -0.2 2 -0.6 2 -0.8 2 -0.8 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.2 2 0.6 2 -2 2 -12.4 2 -10.6 2 11.7 2 14.4 2 1.8 2 -3.1"/></g><g class="ld"><rect class="ld-box" x="24" y="204" width="268" height="110" rx="5"/><text class="sh-lead sh-rec" x="34" y="222">D2</text><path class="sh-rec-line motif-trace" style="--i:1" pathLength="1" d="M24 272.6l2 1.1 2 0.8 2 0.3 2 -0.2 2 -0.8 2 -1.1 2 -1 2 -0.4 2 0.4 2 1.1 2 1.2 2 1 2 0.6 2 0.2 2 0.2 2 0.4 2 -2.9 2 -15.9 2 -13.8 2 15.6 2 19.4 2 2.3 2 -4.4 2 -2 2 -0.9 2 -1.2 2 -1.5 2 -1.6 2 -1.6 2 -1.2 2 -0.7 2 0 2 0.7 2 1.2 2 1.6 2 1.6 2 1.5 2 1.1 2 0.8 2 0.3 2 -0.2 2 -0.8 2 -1.1 2 -1 2 -0.4 2 0.4 2 1.1 2 1.2 2 1 2 0.6 2 0.2 2 0.2 2 0.4 2 -2.9 2 -15.9 2 -13.8 2 15.6 2 19.4 2 2.3 2 -4.4 2 -2 2 -0.9 2 -1.2 2 -1.5 2 -1.6 2 -1.6 2 -1.2 2 -0.7 2 0 2 0.7 2 1.2 2 1.6 2 1.6 2 1.5 2 1.1 2 0.8 2 0.3 2 -0.2 2 -0.8 2 -1.1 2 -1 2 -0.4 2 0.4 2 1.1 2 1.2 2 1 2 0.6 2 0.2 2 0.2 2 0.4 2 -2.9 2 -15.9 2 -13.8 2 15.6 2 19.4 2 2.3 2 -4.4 2 -2 2 -0.9 2 -1.2 2 -1.5 2 -1.6 2 -1.6 2 -1.2 2 -0.7 2 0 2 0.7 2 1.2 2 1.6 2 1.6 2 1.5 2 1.1 2 0.8 2 0.3 2 -0.2 2 -0.8 2 -1.1 2 -1 2 -0.4 2 0.4 2 1.1 2 1.2 2 1 2 0.6 2 0.2 2 0.2 2 0.4 2 -2.9 2 -15.9 2 -13.8 2 15.6 2 19.4 2 2.3 2 -4.4"/></g><g class="ld"><rect class="ld-box" x="24" y="324" width="268" height="110" rx="5"/><text class="sh-lead sh-rec" x="34" y="342">D3</text><path class="sh-rec-line motif-trace" style="--i:2" pathLength="1" d="M24 393l2 1 2 0.7 2 0.3 2 -0.1 2 -0.5 2 -0.7 2 -0.7 2 -0.3 2 0.3 2 0.8 2 0.8 2 0.7 2 0.4 2 0.2 2 0.1 2 0.3 2 -1.6 2 -8.9 2 -7.3 2 12.4 2 19.3 2 -0.3 2 -10.9 2 -3.9 2 -1 2 -1 2 -1.3 2 -1.4 2 -1.3 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.3 2 1.4 2 1.2 2 1 2 0.7 2 0.3 2 -0.1 2 -0.5 2 -0.7 2 -0.7 2 -0.3 2 0.3 2 0.8 2 0.8 2 0.7 2 0.4 2 0.2 2 0.1 2 0.3 2 -1.6 2 -8.9 2 -7.3 2 12.4 2 19.3 2 -0.3 2 -10.9 2 -3.9 2 -1 2 -1 2 -1.3 2 -1.4 2 -1.3 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.3 2 1.4 2 1.2 2 1 2 0.7 2 0.3 2 -0.1 2 -0.5 2 -0.7 2 -0.7 2 -0.3 2 0.3 2 0.8 2 0.8 2 0.7 2 0.4 2 0.2 2 0.1 2 0.3 2 -1.6 2 -8.9 2 -7.3 2 12.4 2 19.3 2 -0.3 2 -10.9 2 -3.9 2 -1 2 -1 2 -1.3 2 -1.4 2 -1.3 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.3 2 1.4 2 1.2 2 1 2 0.7 2 0.3 2 -0.1 2 -0.5 2 -0.7 2 -0.7 2 -0.3 2 0.3 2 0.8 2 0.8 2 0.7 2 0.4 2 0.2 2 0.1 2 0.3 2 -1.6 2 -8.9 2 -7.3 2 12.4 2 19.3 2 -0.3 2 -10.9"/></g><text class="sh-k sh-k2" x="24" y="456">5 ELECTRODES, 3 LEADS IN THREE DIRECTIONS</text><text class="sh-k sh-k2" x="24" y="472">NON-COPLANAR, CABLE-FREE</text><rect class="sh-mat" x="308" y="84" width="88" height="350" rx="8"/><text class="sh-M" x="352" y="278" text-anchor="middle">M</text><text class="sh-kn" x="352" y="304" text-anchor="middle">PERSONAL</text><text class="sh-kn" x="352" y="318" text-anchor="middle">TRANSFORM</text><path class="sh-flow motif-flow" d="M292 139H308"/><path class="sh-flow motif-flow" d="M396 139H422"/><path class="sh-arw" d="M416 135L423 139L416 143"/><path class="sh-flow motif-flow" d="M292 259H308"/><path class="sh-flow motif-flow" d="M396 259H422"/><path class="sh-arw" d="M416 255L423 259L416 263"/><path class="sh-flow motif-flow" d="M292 379H308"/><path class="sh-flow motif-flow" d="M396 379H422"/><path class="sh-arw" d="M416 375L423 379L416 383"/><g class="ld"><rect class="ld-box" x="428" y="84" width="172" height="110" rx="5"/><text class="sh-lead" x="438" y="102">I</text><path class="sh-line motif-trace" style="--i:3" pathLength="1" d="M428 153.3l2 0.9 2 0.6 2 0.2 2 -0.3 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 0.8 2 -2 2 -12.9 2 -11.1 2 11.8 2 14.3 2 2 2 -2.7 2 -1.3 2 -0.8 2 -0.9 2 -1.2 2 -1.2 2 -1.2 2 -1 2 -0.5 2 0 2 0.5 2 1 2 1.2 2 1.2 2 1.2 2 0.9 2 0.6 2 0.2 2 -0.3 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 0.8 2 -2 2 -12.9 2 -11.1 2 11.8 2 14.3 2 2 2 -2.7 2 -1.3 2 -0.8 2 -0.9 2 -1.2 2 -1.2 2 -1.2 2 -1 2 -0.5 2 0 2 0.5 2 1 2 1.2 2 1.2 2 1.2 2 0.9 2 0.6 2 0.2 2 -0.3 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8"/></g><g class="ld"><rect class="ld-box" x="428" y="204" width="172" height="110" rx="5"/><text class="sh-lead" x="438" y="222">II</text><path class="sh-line motif-trace" style="--i:4" pathLength="1" d="M428 272.3l2 1.2 2 0.9 2 0.3 2 -0.3 2 -0.9 2 -1.3 2 -1.2 2 -0.4 2 0.5 2 1.2 2 1.4 2 1.1 2 0.7 2 0.3 2 0.3 2 0.9 2 -2.9 2 -18.3 2 -15.7 2 16.2 2 18.8 2 3.1 2 -2.3 2 -1.3 2 -1 2 -1.3 2 -1.6 2 -1.7 2 -1.6 2 -1.4 2 -0.7 2 0 2 0.7 2 1.4 2 1.6 2 1.7 2 1.6 2 1.2 2 0.9 2 0.3 2 -0.3 2 -0.9 2 -1.3 2 -1.2 2 -0.4 2 0.5 2 1.2 2 1.4 2 1.1 2 0.7 2 0.3 2 0.3 2 0.9 2 -2.9 2 -18.3 2 -15.7 2 16.2 2 18.8 2 3.1 2 -2.3 2 -1.3 2 -1 2 -1.3 2 -1.6 2 -1.7 2 -1.6 2 -1.4 2 -0.7 2 0 2 0.7 2 1.4 2 1.6 2 1.7 2 1.6 2 1.2 2 0.9 2 0.3 2 -0.3 2 -0.9 2 -1.3 2 -1.2 2 -0.4 2 0.5 2 1.2 2 1.4 2 1.1"/></g><g class="ld"><rect class="ld-box" x="428" y="324" width="172" height="110" rx="5"/><text class="sh-lead" x="438" y="342">III</text><path class="sh-line motif-trace" style="--i:5" pathLength="1" d="M428 394.2l2 0.6 2 0.4 2 0.1 2 -0.2 2 -0.4 2 -0.7 2 -0.6 2 -0.3 2 0.3 2 0.6 2 0.8 2 0.6 2 0.3 2 0.2 2 0.3 2 1.4 2 -0.6 2 -9.6 2 -7.4 2 8.3 2 10.7 2 1 2 -3.3 2 -1.3 2 -0.6 2 -0.6 2 -0.8 2 -0.9 2 -0.8 2 -0.7 2 -0.4 2 0 2 0.4 2 0.7 2 0.8 2 0.9 2 0.8 2 0.6 2 0.4 2 0.1 2 -0.2 2 -0.4 2 -0.7 2 -0.6 2 -0.3 2 0.3 2 0.6 2 0.8 2 0.6 2 0.3 2 0.2 2 0.3 2 1.4 2 -0.6 2 -9.6 2 -7.4 2 8.3 2 10.7 2 1 2 -3.3 2 -1.3 2 -0.6 2 -0.6 2 -0.8 2 -0.9 2 -0.8 2 -0.7 2 -0.4 2 0 2 0.4 2 0.7 2 0.8 2 0.9 2 0.8 2 0.6 2 0.4 2 0.1 2 -0.2 2 -0.4 2 -0.7 2 -0.6 2 -0.3 2 0.3 2 0.6 2 0.8 2 0.6"/></g><g class="ld"><rect class="ld-box" x="608" y="84" width="172" height="110" rx="5"/><text class="sh-lead" x="618" y="102">aVR</text><path class="sh-line motif-trace" style="--i:6" pathLength="1" d="M608 159l2 -1 2 -0.7 2 -0.3 2 0.2 2 0.7 2 0.9 2 0.8 2 0.4 2 -0.4 2 -0.9 2 -1 2 -0.8 2 -0.5 2 -0.3 2 -0.1 2 -0.5 2 2.3 2 12.8 2 11.4 2 -10.4 2 -10.6 2 -2.7 2 -1.2 2 0.1 2 0.7 2 1 2 1.3 2 1.4 2 1.3 2 1.1 2 0.6 2 0 2 -0.6 2 -1.1 2 -1.3 2 -1.4 2 -1.2 2 -1 2 -0.7 2 -0.3 2 0.2 2 0.7 2 0.9 2 0.8 2 0.4 2 -0.4 2 -0.9 2 -1 2 -0.8 2 -0.5 2 -0.3 2 -0.1 2 -0.5 2 2.3 2 12.8 2 11.4 2 -10.4 2 -10.6 2 -2.7 2 -1.2 2 0.1 2 0.7 2 1 2 1.3 2 1.4 2 1.3 2 1.1 2 0.6 2 0 2 -0.6 2 -1.1 2 -1.3 2 -1.4 2 -1.2 2 -1 2 -0.7 2 -0.3 2 0.2 2 0.7 2 0.9 2 0.8 2 0.4 2 -0.4 2 -0.9 2 -1 2 -0.8"/></g><g class="ld"><rect class="ld-box" x="608" y="204" width="172" height="110" rx="5"/><text class="sh-lead" x="618" y="222">aVL</text><path class="sh-line motif-trace" style="--i:7" pathLength="1" d="M608 274.5l2 0.5 2 0.3 2 0.2 2 -0.2 2 -0.3 2 -0.5 2 -0.5 2 -0.2 2 0.2 2 0.5 2 0.6 2 0.4 2 0.3 2 0.1 2 0.2 2 0.7 2 -0.8 2 -6.9 2 -5.5 2 7.3 2 10.2 2 0.4 2 -4.4 2 -1.6 2 -0.5 2 -0.5 2 -0.6 2 -0.7 2 -0.7 2 -0.5 2 -0.3 2 0 2 0.3 2 0.5 2 0.7 2 0.7 2 0.6 2 0.5 2 0.3 2 0.2 2 -0.2 2 -0.3 2 -0.5 2 -0.5 2 -0.2 2 0.2 2 0.5 2 0.6 2 0.4 2 0.3 2 0.1 2 0.2 2 0.7 2 -0.8 2 -6.9 2 -5.5 2 7.3 2 10.2 2 0.4 2 -4.4 2 -1.6 2 -0.5 2 -0.5 2 -0.6 2 -0.7 2 -0.7 2 -0.5 2 -0.3 2 0 2 0.3 2 0.5 2 0.7 2 0.7 2 0.6 2 0.5 2 0.3 2 0.2 2 -0.2 2 -0.3 2 -0.5 2 -0.5 2 -0.2 2 0.2 2 0.5 2 0.6 2 0.4"/></g><g class="ld"><rect class="ld-box" x="608" y="324" width="172" height="110" rx="5"/><text class="sh-lead" x="618" y="342">aVF</text><path class="sh-line motif-trace" style="--i:8" pathLength="1" d="M608 392.9l2 1.1 2 0.6 2 0.3 2 -0.2 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 0.8 2 -2 2 -12.9 2 -11.1 2 11.6 2 13.8 2 2 2 -2.3 2 -1.2 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.2 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 0.8 2 -2 2 -12.9 2 -11.1 2 11.6 2 13.8 2 2 2 -2.3 2 -1.2 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.2 2 -0.7 2 -1 2 -1 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8"/></g><g class="ld"><rect class="ld-box" x="788" y="84" width="172" height="110" rx="5"/><text class="sh-lead" x="798" y="102">V1</text><path class="sh-line motif-trace" style="--i:9" pathLength="1" d="M788 157.2l2 -0.4 2 -0.4 2 -0.5 2 -0.5 2 -0.9 2 -0.9 2 -0.9 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.1 2 -0.6 2 -3 2 -1.8 2 11.5 2 22.7 2 -2.7 2 -19.1 2 -5.9 2 -0.2 2 0.4 2 0.6 2 0.5 2 0.6 2 0.4 2 0.3 2 0 2 -0.3 2 -0.4 2 -0.6 2 -0.5 2 -0.6 2 -0.4 2 -0.4 2 -0.5 2 -0.5 2 -0.9 2 -0.9 2 -0.9 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.1 2 -0.6 2 -3 2 -1.8 2 11.5 2 22.7 2 -2.7 2 -19.1 2 -5.9 2 -0.2 2 0.4 2 0.6 2 0.5 2 0.6 2 0.4 2 0.3 2 0 2 -0.3 2 -0.4 2 -0.6 2 -0.5 2 -0.6 2 -0.4 2 -0.4 2 -0.5 2 -0.5 2 -0.9 2 -0.9 2 -0.9 2 -0.3 2 0.3 2 0.8 2 1 2 0.7"/></g><g class="ld"><rect class="ld-box" x="788" y="204" width="172" height="110" rx="5"/><text class="sh-lead" x="798" y="222">V2</text><path class="sh-line motif-trace" style="--i:10" pathLength="1" d="M788 271.8l2 1.4 2 1 2 0.5 2 0 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.1 2 -1.6 2 -7 2 -5.5 2 15.1 2 26.6 2 -2.2 2 -19.6 2 -6.9 2 -1.5 2 -1.5 2 -1.8 2 -1.9 2 -1.9 2 -1.5 2 -0.8 2 0 2 0.8 2 1.5 2 1.9 2 1.9 2 1.8 2 1.4 2 1 2 0.5 2 0 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.1 2 -1.6 2 -7 2 -5.5 2 15.1 2 26.6 2 -2.2 2 -19.6 2 -6.9 2 -1.5 2 -1.5 2 -1.8 2 -1.9 2 -1.9 2 -1.5 2 -0.8 2 0 2 0.8 2 1.5 2 1.9 2 1.9 2 1.8 2 1.4 2 1 2 0.5 2 0 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7"/></g><g class="ld"><rect class="ld-box" x="788" y="324" width="172" height="110" rx="5"/><text class="sh-lead" x="798" y="342">V3</text><path class="sh-line motif-trace" style="--i:11" pathLength="1" d="M788 391.3l2 1.6 2 1.1 2 0.6 2 0.1 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.2 2 -2.4 2 -11.1 2 -9.5 2 15.9 2 24 2 -0.1 2 -13.2 2 -4.9 2 -1.5 2 -1.7 2 -2 2 -2.1 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.1 2 2 2 1.6 2 1.1 2 0.6 2 0.1 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 -0.2 2 -2.4 2 -11.1 2 -9.5 2 15.9 2 24 2 -0.1 2 -13.2 2 -4.9 2 -1.5 2 -1.7 2 -2 2 -2.1 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.1 2 2 2 1.6 2 1.1 2 0.6 2 0.1 2 -0.5 2 -0.8 2 -0.7 2 -0.3 2 0.3 2 0.8 2 1 2 0.7"/></g><g class="ld"><rect class="ld-box" x="968" y="84" width="172" height="110" rx="5"/><text class="sh-lead" x="978" y="102">V4</text><path class="sh-line motif-trace" style="--i:12" pathLength="1" d="M968 151.1l2 1.7 2 1.1 2 0.6 2 0 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.1 2 0.6 2 -3 2 -16.9 2 -14.6 2 17.3 2 22.4 2 2 2 -6.7 2 -2.9 2 -1.4 2 -1.7 2 -2.1 2 -2.3 2 -2.2 2 -1.8 2 -1 2 0 2 1 2 1.8 2 2.2 2 2.3 2 2.1 2 1.7 2 1.1 2 0.6 2 0 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.1 2 0.6 2 -3 2 -16.9 2 -14.6 2 17.3 2 22.4 2 2 2 -6.7 2 -2.9 2 -1.4 2 -1.7 2 -2.1 2 -2.3 2 -2.2 2 -1.8 2 -1 2 0 2 1 2 1.8 2 2.2 2 2.3 2 2.1 2 1.7 2 1.1 2 0.6 2 0 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8"/></g><g class="ld"><rect class="ld-box" x="968" y="204" width="172" height="110" rx="5"/><text class="sh-lead" x="978" y="222">V5</text><path class="sh-line motif-trace" style="--i:13" pathLength="1" d="M968 271.7l2 1.5 2 1 2 0.4 2 -0.1 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 1 2 -2.6 2 -16.6 2 -14.2 2 15.2 2 18.2 2 2.5 2 -3.5 2 -1.7 2 -1.2 2 -1.5 2 -1.8 2 -2.1 2 -1.9 2 -1.5 2 -0.9 2 0 2 0.9 2 1.5 2 1.9 2 2.1 2 1.8 2 1.5 2 1 2 0.4 2 -0.1 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 1 2 -2.6 2 -16.6 2 -14.2 2 15.2 2 18.2 2 2.5 2 -3.5 2 -1.7 2 -1.2 2 -1.5 2 -1.8 2 -2.1 2 -1.9 2 -1.5 2 -0.9 2 0 2 0.9 2 1.5 2 1.9 2 2.1 2 1.8 2 1.5 2 1 2 0.4 2 -0.1 2 -0.6 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8"/></g><g class="ld"><rect class="ld-box" x="968" y="324" width="172" height="110" rx="5"/><text class="sh-lead" x="978" y="342">V6</text><path class="sh-line motif-trace" style="--i:14" pathLength="1" d="M968 392.3l2 1.3 2 0.8 2 0.4 2 -0.2 2 -0.7 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 1.2 2 -1.9 2 -14.3 2 -12 2 12.4 2 14.6 2 2.2 2 -2.4 2 -1.3 2 -1 2 -1.3 2 -1.6 2 -1.7 2 -1.6 2 -1.4 2 -0.7 2 0 2 0.7 2 1.4 2 1.6 2 1.7 2 1.6 2 1.3 2 0.8 2 0.4 2 -0.2 2 -0.7 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8 2 0.6 2 0.3 2 0.2 2 1.2 2 -1.9 2 -14.3 2 -12 2 12.4 2 14.6 2 2.2 2 -2.4 2 -1.3 2 -1 2 -1.3 2 -1.6 2 -1.7 2 -1.6 2 -1.4 2 -0.7 2 0 2 0.7 2 1.4 2 1.6 2 1.7 2 1.6 2 1.3 2 0.8 2 0.4 2 -0.2 2 -0.7 2 -1 2 -0.9 2 -0.3 2 0.4 2 0.9 2 1.2 2 0.8"/></g><g class="ld"><rect class="ld-box" x="428" y="444" width="712" height="84" rx="5"/><text class="sh-lead" x="438" y="462">II</text><text class="sh-k sh-k2" x="468" y="462">RHYTHM STRIP</text><path class="sh-line motif-trace" style="--i:15" pathLength="1" d="M428 498.9l2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9 2 -1.1 2 -0.8 2 -1.1 2 -1.3 2 -1.4 2 -1.4 2 -1.1 2 -0.6 2 0 2 0.6 2 1.1 2 1.4 2 1.4 2 1.3 2 1.1 2 0.6 2 0.3 2 -0.3 2 -0.7 2 -1.1 2 -0.9 2 -0.4 2 0.4 2 1 2 1.2 2 0.9 2 0.6 2 0.3 2 0.2 2 0.8 2 -2.5 2 -15.2 2 -13.1 2 13.5 2 15.7 2 2.5 2 -1.9"/></g><g class="motif-scan" aria-hidden="true"><rect x="368" y="72" width="60" height="466" fill="url(#shtrail)"/><rect class="sh-scan" x="427" y="72" width="2" height="466"/></g><text class="sh-k sh-k2" x="24" y="574">DRAWN FOR THIS PAGE. THE WAVEFORMS ARE SCHEMATIC, NOT A PATIENT RECORDING.</text><text class="sh-k sh-k2" x="24" y="592">PER THE FDA INDICATIONS, THE SYNTHESIZED OUTPUT IS SIMILAR, BUT NOT IDENTICAL, TO A STANDARD DIAGNOSTIC 12-LEAD ECG.</text></svg>
+<svg class="sheet-svg sheet-m" viewBox="0 0 360 796" role="img" aria-label="A schematic 12-lead ECG report sheet: three recorded directions pass through a personalized transformation matrix and fill the standard twelve-lead layout" focusable="false"><defs>
+  <pattern id="shm1" width="10" height="10" patternUnits="userSpaceOnUse"><path class="g-minor" d="M10 0H0V10" fill="none" stroke-width=".6"/></pattern>
+  <pattern id="shm5" width="50" height="50" patternUnits="userSpaceOnUse"><path class="g-major" d="M50 0H0V50" fill="none" stroke-width="1"/></pattern>
+</defs><rect class="sh-paper" width="360" height="796" rx="10"/><rect width="360" height="796" rx="10" fill="url(#shm1)"/><rect width="360" height="796" rx="10" fill="url(#shm5)"/><rect class="sh-edge" x=".5" y=".5" width="359" height="795" rx="10" fill="none"/><text class="sh-k" x="12" y="24">RECORDED, THREE DIRECTIONS</text><g class="ld"><rect class="ld-box" x="12" y="34" width="104" height="70" rx="5"/><text class="sh-lead sh-rec" x="20" y="52">D1</text><path class="sh-rec-line motif-trace" style="--i:0" pathLength="1" d="M12 86l2 0.2 2 0.2 2 0.1 2 0.3 2 0.6 2 0.8 2 0.7 2 0.5 2 0.4 2 0.1 2 0.1 2 0.4 2 -1.2 2 -7.6 2 -6.5 2 7.2 2 8.8 2 1.1 2 -1.9 2 -0.8 2 -0.5 2 -0.5 2 -0.6 2 -0.7 2 -0.7 2 -0.6 2 -0.3 2 0 2 0.1 2 0.3 2 0.2 2 0.2 2 0.1 2 0.3 2 0.6 2 0.8 2 0.7 2 0.5 2 0.4 2 0.1 2 0.1 2 0.4 2 -1.2 2 -7.6 2 -6.5 2 7.2 2 8.8 2 1.1 2 -1.9 2 -0.8 2 -0.5 2 -0.5"/></g><g class="ld"><rect class="ld-box" x="124" y="34" width="104" height="70" rx="5"/><text class="sh-lead sh-rec" x="132" y="52">D2</text><path class="sh-rec-line motif-trace" style="--i:1" pathLength="1" d="M124 84.4l2 0.4 2 0.2 2 0.3 2 0.5 2 0.8 2 1 2 0.9 2 0.7 2 0.5 2 0.2 2 0.1 2 0.3 2 -1.8 2 -9.7 2 -8.5 2 9.6 2 11.8 2 1.4 2 -2.7 2 -1.2 2 -0.6 2 -0.7 2 -0.9 2 -1 2 -0.9 2 -0.8 2 -0.4 2 -0.1 2 0.2 2 0.4 2 0.4 2 0.2 2 0.3 2 0.5 2 0.8 2 1 2 0.9 2 0.7 2 0.5 2 0.2 2 0.1 2 0.3 2 -1.8 2 -9.7 2 -8.5 2 9.6 2 11.8 2 1.4 2 -2.7 2 -1.2 2 -0.6 2 -0.7"/></g><g class="ld"><rect class="ld-box" x="236" y="34" width="104" height="70" rx="5"/><text class="sh-lead sh-rec" x="244" y="52">D3</text><path class="sh-rec-line motif-trace" style="--i:2" pathLength="1" d="M236 85.3l2 0.4 2 0.4 2 0.3 2 0.4 2 0.7 2 0.7 2 0.7 2 0.6 2 0.3 2 0.1 2 0.1 2 0.2 2 -1 2 -5.4 2 -4.5 2 7.6 2 11.8 2 -0.2 2 -6.6 2 -2.4 2 -0.7 2 -0.6 2 -0.8 2 -0.8 2 -0.8 2 -0.7 2 -0.4 2 0 2 0.2 2 0.4 2 0.4 2 0.4 2 0.3 2 0.4 2 0.7 2 0.7 2 0.7 2 0.6 2 0.3 2 0.1 2 0.1 2 0.2 2 -1 2 -5.4 2 -4.5 2 7.6 2 11.8 2 -0.2 2 -6.6 2 -2.4 2 -0.7 2 -0.6"/></g><text class="sh-k sh-k2" x="12" y="122">5 ELECTRODES, 3 LEADS, NON-COPLANAR</text><path class="sh-flow motif-flow" d="M64 128V150"/><path class="sh-flow motif-flow" d="M176 128V150"/><path class="sh-flow motif-flow" d="M288 128V150"/><rect class="sh-mat" x="12" y="150" width="336" height="36" rx="8"/><text class="sh-kn" x="180" y="173" text-anchor="middle">PERSONALIZED TRANSFORMATION MATRIX</text><path class="sh-flow motif-flow" d="M88 190V210"/><path class="sh-arw" d="M84 205L88 211L92 205"/><path class="sh-flow motif-flow" d="M180 190V210"/><path class="sh-arw" d="M176 205L180 211L184 205"/><path class="sh-flow motif-flow" d="M272 190V210"/><path class="sh-arw" d="M268 205L272 211L276 205"/><text class="sh-k" x="12" y="228">SYNTHESIZED 12-LEAD DISPLAY</text><g class="ld"><rect class="ld-box" x="12" y="238" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="253">I</text><path class="sh-line motif-trace" style="--i:3" pathLength="1" d="M12 277l2 0.5 2 0.4 2 0.3 2 0 2 0 2 0.2 2 0.6 2 0.8 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.9 2 9.5 2 1.3 2 -1.8 2 -0.9 2 -0.5 2 -0.6 2 -0.8 2 -0.8 2 -0.8 2 -0.7 2 -0.3 2 -0.1 2 0.3 2 0.5 2 0.4 2 0.3 2 0 2 0 2 0.2 2 0.6 2 0.8 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.9 2 9.5 2 1.3 2 -1.8 2 -0.9 2 -0.5 2 -0.6 2 -0.8 2 -0.8 2 -0.8 2 -0.7 2 -0.3 2 -0.1 2 0.3 2 0.5 2 0.4 2 0.3 2 0 2 0 2 0.2 2 0.6 2 0.8 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.9 2 9.5 2 1.3 2 -1.8 2 -0.9 2 -0.5"/></g><g class="ld"><rect class="ld-box" x="189" y="238" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="253">II</text><path class="sh-line motif-trace" style="--i:4" pathLength="1" d="M189 275.2l2 0.7 2 0.6 2 0.5 2 0.1 2 0 2 0.3 2 0.8 2 1 2 1.1 2 0.8 2 0.5 2 0.3 2 0.2 2 0.6 2 -2 2 -12.1 2 -10.5 2 10.8 2 12.5 2 2.1 2 -1.6 2 -0.8 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 -0.1 2 0.4 2 0.7 2 0.6 2 0.5 2 0.1 2 0 2 0.3 2 0.8 2 1 2 1.1 2 0.8 2 0.5 2 0.3 2 0.2 2 0.6 2 -2 2 -12.1 2 -10.5 2 10.8 2 12.5 2 2.1 2 -1.6 2 -0.8 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 -0.1 2 0.4 2 0.7 2 0.6 2 0.5 2 0.1 2 0 2 0.3 2 0.8 2 1 2 1.1 2 0.8 2 0.5 2 0.3 2 0.2 2 0.6 2 -2 2 -12.1 2 -10.5 2 10.8 2 12.5 2 2.1 2 -1.6 2 -0.8 2 -0.7"/></g><g class="ld"><rect class="ld-box" x="12" y="308" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="323">III</text><path class="sh-line motif-trace" style="--i:5" pathLength="1" d="M12 348.6l2 0.3 2 0.3 2 0.2 2 0.1 2 0 2 0.1 2 0.4 2 0.5 2 0.6 2 0.4 2 0.3 2 0.1 2 0.2 2 1 2 -0.5 2 -6.3 2 -5 2 5.5 2 7.2 2 0.7 2 -2.2 2 -0.9 2 -0.4 2 -0.4 2 -0.6 2 -0.5 2 -0.6 2 -0.4 2 -0.3 2 0 2 0.2 2 0.3 2 0.3 2 0.2 2 0.1 2 0 2 0.1 2 0.4 2 0.5 2 0.6 2 0.4 2 0.3 2 0.1 2 0.2 2 1 2 -0.5 2 -6.3 2 -5 2 5.5 2 7.2 2 0.7 2 -2.2 2 -0.9 2 -0.4 2 -0.4 2 -0.6 2 -0.5 2 -0.6 2 -0.4 2 -0.3 2 0 2 0.2 2 0.3 2 0.3 2 0.2 2 0.1 2 0 2 0.1 2 0.4 2 0.5 2 0.6 2 0.4 2 0.3 2 0.1 2 0.2 2 1 2 -0.5 2 -6.3 2 -5 2 5.5 2 7.2 2 0.7 2 -2.2 2 -0.9 2 -0.4"/></g><g class="ld"><rect class="ld-box" x="189" y="308" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="323">aVR</text><path class="sh-line motif-trace" style="--i:6" pathLength="1" d="M189 357.4l2 -0.5 2 -0.6 2 -0.4 2 -0.1 2 -0.1 2 -0.3 2 -0.6 2 -0.8 2 -0.8 2 -0.6 2 -0.3 2 -0.2 2 -0.1 2 -0.3 2 1.5 2 8.6 2 7.5 2 -6.9 2 -7.1 2 -1.8 2 -0.8 2 0.1 2 0.5 2 0.7 2 0.8 2 0.9 2 0.9 2 0.7 2 0.4 2 0 2 -0.3 2 -0.5 2 -0.6 2 -0.4 2 -0.1 2 -0.1 2 -0.3 2 -0.6 2 -0.8 2 -0.8 2 -0.6 2 -0.3 2 -0.2 2 -0.1 2 -0.3 2 1.5 2 8.6 2 7.5 2 -6.9 2 -7.1 2 -1.8 2 -0.8 2 0.1 2 0.5 2 0.7 2 0.8 2 0.9 2 0.9 2 0.7 2 0.4 2 0 2 -0.3 2 -0.5 2 -0.6 2 -0.4 2 -0.1 2 -0.1 2 -0.3 2 -0.6 2 -0.8 2 -0.8 2 -0.6 2 -0.3 2 -0.2 2 -0.1 2 -0.3 2 1.5 2 8.6 2 7.5 2 -6.9 2 -7.1 2 -1.8 2 -0.8 2 0.1 2 0.5"/></g><g class="ld"><rect class="ld-box" x="12" y="378" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="393">aVL</text><path class="sh-line motif-trace" style="--i:7" pathLength="1" d="M12 419.3l2 0.3 2 0.2 2 0.2 2 0 2 0 2 0.2 2 0.3 2 0.4 2 0.4 2 0.4 2 0.2 2 0 2 0.1 2 0.5 2 -0.5 2 -4.6 2 -3.7 2 4.9 2 6.8 2 0.3 2 -2.9 2 -1.1 2 -0.3 2 -0.4 2 -0.4 2 -0.5 2 -0.4 2 -0.4 2 -0.2 2 0 2 0.2 2 0.3 2 0.2 2 0.2 2 0 2 0 2 0.2 2 0.3 2 0.4 2 0.4 2 0.4 2 0.2 2 0 2 0.1 2 0.5 2 -0.5 2 -4.6 2 -3.7 2 4.9 2 6.8 2 0.3 2 -2.9 2 -1.1 2 -0.3 2 -0.4 2 -0.4 2 -0.5 2 -0.4 2 -0.4 2 -0.2 2 0 2 0.2 2 0.3 2 0.2 2 0.2 2 0 2 0 2 0.2 2 0.3 2 0.4 2 0.4 2 0.4 2 0.2 2 0 2 0.1 2 0.5 2 -0.5 2 -4.6 2 -3.7 2 4.9 2 6.8 2 0.3 2 -2.9 2 -1.1 2 -0.3"/></g><g class="ld"><rect class="ld-box" x="189" y="378" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="393">aVF</text><path class="sh-line motif-trace" style="--i:8" pathLength="1" d="M189 416.4l2 0.5 2 0.6 2 0.3 2 0.2 2 0 2 0.3 2 0.6 2 0.9 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.7 2 9.2 2 1.4 2 -1.6 2 -0.8 2 -0.5 2 -0.7 2 -0.9 2 -1 2 -0.9 2 -0.7 2 -0.5 2 0 2 0.4 2 0.5 2 0.6 2 0.3 2 0.2 2 0 2 0.3 2 0.6 2 0.9 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.7 2 9.2 2 1.4 2 -1.6 2 -0.8 2 -0.5 2 -0.7 2 -0.9 2 -1 2 -0.9 2 -0.7 2 -0.5 2 0 2 0.4 2 0.5 2 0.6 2 0.3 2 0.2 2 0 2 0.3 2 0.6 2 0.9 2 0.9 2 0.6 2 0.4 2 0.2 2 0.1 2 0.6 2 -1.3 2 -8.7 2 -7.3 2 7.7 2 9.2 2 1.4 2 -1.6 2 -0.8 2 -0.5"/></g><g class="ld"><rect class="ld-box" x="12" y="448" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="463">V1</text><path class="sh-line motif-trace" style="--i:9" pathLength="1" d="M12 494.1l2 -0.4 2 -0.7 2 -0.9 2 -0.9 2 -0.8 2 -0.5 2 0.1 2 0.5 2 0.5 2 0.5 2 0.3 2 0.1 2 0.1 2 0 2 -0.5 2 -2 2 -1.2 2 7.7 2 15.1 2 -1.7 2 -12.8 2 -3.9 2 -0.2 2 0.3 2 0.4 2 0.4 2 0.3 2 0.3 2 0.2 2 0 2 -0.3 2 -0.4 2 -0.7 2 -0.9 2 -0.9 2 -0.8 2 -0.5 2 0.1 2 0.5 2 0.5 2 0.5 2 0.3 2 0.1 2 0.1 2 0 2 -0.5 2 -2 2 -1.2 2 7.7 2 15.1 2 -1.7 2 -12.8 2 -3.9 2 -0.2 2 0.3 2 0.4 2 0.4 2 0.3 2 0.3 2 0.2 2 0 2 -0.3 2 -0.4 2 -0.7 2 -0.9 2 -0.9 2 -0.8 2 -0.5 2 0.1 2 0.5 2 0.5 2 0.5 2 0.3 2 0.1 2 0.1 2 0 2 -0.5 2 -2 2 -1.2 2 7.7 2 15.1 2 -1.7 2 -12.8 2 -3.9 2 -0.2"/></g><g class="ld"><rect class="ld-box" x="189" y="448" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="463">V2</text><path class="sh-line motif-trace" style="--i:10" pathLength="1" d="M189 484.4l2 0.8 2 1 2 0.8 2 0.6 2 0.4 2 0.5 2 0.7 2 0.8 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1 2 -4.7 2 -3.7 2 10.1 2 17.7 2 -1.4 2 -13.1 2 -4.6 2 -1 2 -1 2 -1.2 2 -1.3 2 -1.2 2 -1 2 -0.6 2 0 2 0.5 2 0.8 2 1 2 0.8 2 0.6 2 0.4 2 0.5 2 0.7 2 0.8 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1 2 -4.7 2 -3.7 2 10.1 2 17.7 2 -1.4 2 -13.1 2 -4.6 2 -1 2 -1 2 -1.2 2 -1.3 2 -1.2 2 -1 2 -0.6 2 0 2 0.5 2 0.8 2 1 2 0.8 2 0.6 2 0.4 2 0.5 2 0.7 2 0.8 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1 2 -4.7 2 -3.7 2 10.1 2 17.7 2 -1.4 2 -13.1 2 -4.6 2 -1"/></g><g class="ld"><rect class="ld-box" x="12" y="518" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="533">V3</text><path class="sh-line motif-trace" style="--i:11" pathLength="1" d="M12 553.5l2 1 2 1.1 2 0.9 2 0.7 2 0.6 2 0.6 2 0.7 2 0.9 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1.6 2 -7.4 2 -6.4 2 10.6 2 16 2 0 2 -8.8 2 -3.3 2 -1 2 -1.1 2 -1.3 2 -1.5 2 -1.4 2 -1.1 2 -0.6 2 -0.1 2 0.6 2 1 2 1.1 2 0.9 2 0.7 2 0.6 2 0.6 2 0.7 2 0.9 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1.6 2 -7.4 2 -6.4 2 10.6 2 16 2 0 2 -8.8 2 -3.3 2 -1 2 -1.1 2 -1.3 2 -1.5 2 -1.4 2 -1.1 2 -0.6 2 -0.1 2 0.6 2 1 2 1.1 2 0.9 2 0.7 2 0.6 2 0.6 2 0.7 2 0.9 2 0.8 2 0.6 2 0.3 2 0.2 2 0.1 2 -0.1 2 -1.6 2 -7.4 2 -6.4 2 10.6 2 16 2 0 2 -8.8 2 -3.3 2 -1"/></g><g class="ld"><rect class="ld-box" x="189" y="518" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="533">V4</text><path class="sh-line motif-trace" style="--i:12" pathLength="1" d="M189 553l2 1 2 1.2 2 0.9 2 0.7 2 0.4 2 0.6 2 0.8 2 1 2 1 2 0.7 2 0.4 2 0.2 2 0.1 2 0.4 2 -2 2 -11.3 2 -9.7 2 11.6 2 14.8 2 1.4 2 -4.5 2 -1.9 2 -0.9 2 -1.2 2 -1.4 2 -1.5 2 -1.5 2 -1.2 2 -0.6 2 0 2 0.5 2 1 2 1.2 2 0.9 2 0.7 2 0.4 2 0.6 2 0.8 2 1 2 1 2 0.7 2 0.4 2 0.2 2 0.1 2 0.4 2 -2 2 -11.3 2 -9.7 2 11.6 2 14.8 2 1.4 2 -4.5 2 -1.9 2 -0.9 2 -1.2 2 -1.4 2 -1.5 2 -1.5 2 -1.2 2 -0.6 2 0 2 0.5 2 1 2 1.2 2 0.9 2 0.7 2 0.4 2 0.6 2 0.8 2 1 2 1 2 0.7 2 0.4 2 0.2 2 0.1 2 0.4 2 -2 2 -11.3 2 -9.7 2 11.6 2 14.8 2 1.4 2 -4.5 2 -1.9 2 -0.9"/></g><g class="ld"><rect class="ld-box" x="12" y="588" width="171" height="64" rx="5"/><text class="sh-lead" x="20" y="603">V5</text><path class="sh-line motif-trace" style="--i:13" pathLength="1" d="M12 624.1l2 0.9 2 0.9 2 0.8 2 0.5 2 0.3 2 0.5 2 0.7 2 1 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.6 2 -1.7 2 -11.1 2 -9.4 2 10.1 2 12.1 2 1.7 2 -2.3 2 -1.2 2 -0.8 2 -1 2 -1.2 2 -1.3 2 -1.3 2 -1.1 2 -0.5 2 -0.1 2 0.5 2 0.9 2 0.9 2 0.8 2 0.5 2 0.3 2 0.5 2 0.7 2 1 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.6 2 -1.7 2 -11.1 2 -9.4 2 10.1 2 12.1 2 1.7 2 -2.3 2 -1.2 2 -0.8 2 -1 2 -1.2 2 -1.3 2 -1.3 2 -1.1 2 -0.5 2 -0.1 2 0.5 2 0.9 2 0.9 2 0.8 2 0.5 2 0.3 2 0.5 2 0.7 2 1 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.6 2 -1.7 2 -11.1 2 -9.4 2 10.1 2 12.1 2 1.7 2 -2.3 2 -1.2 2 -0.8"/></g><g class="ld"><rect class="ld-box" x="189" y="588" width="171" height="64" rx="5"/><text class="sh-lead" x="197" y="603">V6</text><path class="sh-line motif-trace" style="--i:14" pathLength="1" d="M189 625.3l2 0.7 2 0.7 2 0.6 2 0.3 2 0.2 2 0.3 2 0.7 2 0.9 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.8 2 -1.3 2 -9.5 2 -8 2 8.2 2 9.8 2 1.4 2 -1.6 2 -0.8 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 -0.1 2 0.5 2 0.7 2 0.7 2 0.6 2 0.3 2 0.2 2 0.3 2 0.7 2 0.9 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.8 2 -1.3 2 -9.5 2 -8 2 8.2 2 9.8 2 1.4 2 -1.6 2 -0.8 2 -0.7 2 -0.9 2 -1 2 -1.2 2 -1.1 2 -0.8 2 -0.5 2 -0.1 2 0.5 2 0.7 2 0.7 2 0.6 2 0.3 2 0.2 2 0.3 2 0.7 2 0.9 2 0.9 2 0.7 2 0.4 2 0.2 2 0.2 2 0.8 2 -1.3 2 -9.5 2 -8 2 8.2 2 9.8 2 1.4 2 -1.6 2 -0.8 2 -0.7"/></g><g class="ld"><rect class="ld-box" x="12" y="658" width="336" height="64" rx="5"/><text class="sh-lead" x="20" y="673">II</text><text class="sh-k sh-k2" x="46" y="673">RHYTHM STRIP</text><path class="sh-line motif-trace" style="--i:15" pathLength="1" d="M12 697.8l2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 0.6 2 -1.8 2 -11.1 2 -9.6 2 9.9 2 11.5 2 1.8 2 -1.4 2 -0.8 2 -0.6 2 -0.8 2 -0.9 2 -1.1 2 -1 2 -0.8 2 -0.4 2 -0.1 2 0.4 2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 0.6 2 -1.8 2 -11.1 2 -9.6 2 9.9 2 11.5 2 1.8 2 -1.4 2 -0.8 2 -0.6 2 -0.8 2 -0.9 2 -1.1 2 -1 2 -0.8 2 -0.4 2 -0.1 2 0.4 2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 0.6 2 -1.8 2 -11.1 2 -9.6 2 9.9 2 11.5 2 1.8 2 -1.4 2 -0.8 2 -0.6 2 -0.8 2 -0.9 2 -1.1 2 -1 2 -0.8 2 -0.4 2 -0.1 2 0.4 2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 0.6 2 -1.8 2 -11.1 2 -9.6 2 9.9 2 11.5 2 1.8 2 -1.4 2 -0.8 2 -0.6 2 -0.8 2 -0.9 2 -1.1 2 -1 2 -0.8 2 -0.4 2 -0.1 2 0.4 2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1 2 0.6 2 -1.8 2 -11.1 2 -9.6 2 9.9 2 11.5 2 1.8 2 -1.4 2 -0.8 2 -0.6 2 -0.8 2 -0.9 2 -1.1 2 -1 2 -0.8 2 -0.4 2 -0.1 2 0.4 2 0.6 2 0.6 2 0.4 2 0.1 2 0 2 0.3 2 0.7 2 1 2 1 2 0.7 2 0.5 2 0.2 2 0.1"/></g><text class="sh-k sh-k2" x="12" y="744">DRAWN FOR THIS PAGE. SCHEMATIC WAVEFORMS,</text><text class="sh-k sh-k2" x="12" y="758">NOT A PATIENT RECORDING. PER THE FDA INDICATIONS,</text><text class="sh-k sh-k2" x="12" y="772">THE OUTPUT IS SIMILAR, BUT NOT IDENTICAL, TO A</text><text class="sh-k sh-k2" x="12" y="786">STANDARD DIAGNOSTIC 12-LEAD ECG.</text></svg>
+
+      <figcaption class="sheet-cap">The mechanism, drawn. The device records <b>three leads in three directions</b> from five electrodes; cloud software applies a <b>personalized transformation matrix</b> to synthesize the familiar 12-lead display. Waveforms are schematic. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.heartbeam.com/indications" target="_blank" rel="noopener">Cleared indications</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PART 1 THE GAP (white): sourced epidemiology only, no market-size figure. ============ -->
+<section id="gap" class="part sec-white" aria-labelledby="gap-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">1</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">The gap</span>
+      <span class="folio-basis">Basis: 10-K Item 1; Jun&nbsp;30, 2026 release</span>
+    </header>
+    <div class="part-main">
+      <h2 id="gap-h" class="reveal">A standard 12-lead ECG stays in the clinic. <b>Symptoms do not.</b></h2>
+      <p class="lead reveal" style="--d:.05s">The 10-K calls the 12-lead ECG the gold standard, and says it is impractical to keep one next to a patient when symptoms begin outside a clinical setting, because recording it means attaching multiple electrodes with professional help. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      <ul class="stat-row reveal" style="--d:.1s">
+        <li class="stat"><span class="stat-v">~20M</span><span class="stat-k">US adults with diagnosed coronary artery disease, and about 130 million living with cardiovascular disease, per the American Heart Association figures the 10-K cites <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Market Opportunity</a></span></li>
+        <li class="stat"><span class="stat-v">40 s</span><span class="stat-k">&ldquo;Every 40 seconds someone in the US has a heart attack,&rdquo; the 10-K states <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Market Opportunity</a></span></li>
+        <li class="stat"><span class="stat-v">&lt;20%</span><span class="stat-k">of chest-pain emergency department visits end in a diagnosis of a life-threatening condition, per the 10-K; chest pain is the second most common reason for an ED visit in patients over 45 <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Market Opportunity</a></span></li>
+      </ul>
+      <div class="two reveal" style="--d:.12s">
+        <p>Patients with heart attack symptoms often wait more than two hours before seeking care, the company said on June&nbsp;30, citing two published papers. It argues that a clinical-grade ECG recorded when symptoms begin could shorten that wait. Whether HeartBeam&rsquo;s technology can do this for heart attacks is what its studies are testing; no FDA indication yet says it can. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/125/heartbeam-completes-enrollment-in-heart-attack-detection" target="_blank" rel="noopener">Jun&nbsp;30 release</a></p>
+        <p>The 10-K names consumer single-lead devices and patch monitors as established alternatives that are intended for rhythm abnormalities, not for ischemia or heart attack. It also lists two FDA-cleared devices that give information on potential ischemic events outside a clinic, the implantable AngelMed Guardian and SHL Telemedicine&rsquo;s Smartheart home 12-lead, which it calls larger and more complex than HeartBeam&rsquo;s, and it says many competitors have significantly greater resources. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Competition</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PART 2 TECHNOLOGY (tint): the device, the four steps in the company's words, four real differentiators. One real photograph (scale and the patient app) and the company's own render. ============ -->
+<section id="technology" class="part sec-tint" aria-labelledby="tech-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">2</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Technology</span>
+      <span class="folio-basis">Basis: 10-K Item 1; heartbeam.com</span>
+    </header>
+    <div class="part-main">
+      <h2 id="tech-h" class="reveal">Three directions recorded. <b>Twelve leads synthesized.</b></h2>
+      <p class="lead reveal" style="--d:.05s">The device records the heart&rsquo;s electrical activity from three non-coplanar directions through integrated electrodes, with no cables, and sends it by Bluetooth to a smartphone. Cloud software checks signal quality, synthesizes a 12-lead ECG with a personalized transformation matrix, and overlays the patient&rsquo;s own baseline recording for the physician. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      <div class="tech-row">
+        <figure class="fig reveal" style="--d:.1s">
+          <img src="img/device-and-app.jpg" width="1600" height="1021" loading="lazy" alt="One hand holds the card-sized HeartBeam recorder beside a second hand holding a phone that shows the HeartBeam app with a Start Recording button">
+          <figcaption>The recorder in one hand, the patient app in the other. The company&rsquo;s own photograph, from heartbeam.com.</figcaption>
+        </figure>
+        <div class="tech-side reveal" style="--d:.14s">
+          <div class="spec-wrap">
+            <figure class="render"><img src="img/device-render.webp" width="854" height="820" loading="lazy" alt="The HeartBeam recorder: a white card-sized device with the HeartBeam logo, a dark window and two grey tabs"><figcaption>The recorder, in the company&rsquo;s render.</figcaption></figure>
+            <dl class="specs">
+              <div><dt>Size</dt><dd>About the size of a credit card, about 1/8&nbsp;inch (4&nbsp;mm) thick</dd></div>
+              <div><dt>Weight</dt><dd>About 1&nbsp;ounce (28&nbsp;grams)</dd></div>
+              <div><dt>Electrodes</dt><dd>Integrated; no cables</dd></div>
+              <div><dt>Link</dt><dd>Bluetooth to a smartphone</dd></div>
+              <div><dt>FDA class</dt><dd>Class II</dd></div>
+            </dl>
+          </div>
+          <p class="src-note">Device facts from the <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a>.</p>
+        </div>
+      </div>
+
+      <ol class="steps" aria-label="How a recording works">
+        <li class="reveal"><span class="step-n">01</span><b>The app guides the patient.</b><span>The patient app gives step-by-step guidance. <a class="src-l" href="https://www.heartbeam.com/" target="_blank" rel="noopener">heartbeam.com</a></span></li>
+        <li class="reveal" style="--d:.06s"><span class="step-n">02</span><b>The patient records.</b><span>All the patient does is press the device against the chest. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></span></li>
+        <li class="reveal" style="--d:.12s"><span class="step-n">03</span><b>The cloud synthesizes.</b><span>The recording goes to the HeartBeam cloud, which checks signal quality and synthesizes the 12-lead ECG. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></span></li>
+        <li class="reveal" style="--d:.18s"><span class="step-n">04</span><b>A physician reviews.</b><span>An on-call, board-certified cardiologist reviews it and follows up with the patient, per the company. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.heartbeam.com/" target="_blank" rel="noopener">heartbeam.com</a></span></li>
+      </ol>
+
+      <div class="diff-head reveal"><h3>What the company says sets it apart</h3></div>
+      <ol class="diffs">
+        <li class="reveal"><span class="diff-n">01</span><div><h3>Cable-free</h3><p>Electrodes are built into the card; the patient presses it to the chest. A standard 12-lead machine needs a trained professional to place electrodes. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p></div></li>
+        <li class="reveal" style="--d:.06s"><span class="diff-n">02</span><div><h3>Three directions into twelve leads</h3><p>The signal is collected along three non-coplanar directions and converted with a personalized transformation matrix into a familiar 12-lead display. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p></div></li>
+        <li class="reveal" style="--d:.12s"><span class="diff-n">03</span><div><h3>A personal baseline</h3><p>Each recording can be read against the patient&rsquo;s own asymptomatic recording; the software overlays the two for the physician. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p></div></li>
+        <li class="reveal" style="--d:.18s"><span class="diff-n">04</span><div><h3>Patents</h3><p>The 10-K counts 25 issued patents (17 in the US, 8 outside it) and 35 pending applications (13 US, 22 outside). The Jun&nbsp;30 10-Q says 26 issued but still itemizes 17 US and 8 outside (25), mentions a US patent awarded in July 2026, and counts 33 pending (11 US, 22 outside). <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Intellectual Property</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 CLEARED AND NOT CLEARED (DARK): the frontier. A trace runs solid through what the FDA has cleared and dashed past it, with a ring on the line where the Breakthrough designation sits. ============ -->
+<section id="cleared" class="part sec-dark frontier-band" aria-labelledby="clr-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">3</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Cleared, and not</span>
+      <span class="folio-basis">Basis: 10-K; 8-K Nov&nbsp;21, 2025; releases Dec&nbsp;10, 2025 and Oct&nbsp;5, 2026</span>
+    </header>
+    <div class="part-main">
+      <h2 id="clr-h" class="reveal">What the FDA has cleared, and <b>what it has not.</b></h2>
+      <p class="lead reveal" style="--d:.05s">The clearance covers manual assessment of a short list of non-life-threatening arrhythmias. Heart attack assessment is the company&rsquo;s stated first priority, and it is not cleared.</p>
+      <div class="frontier reveal" style="--d:.08s">
+<svg class="frontier-svg fr-d" viewBox="0 0 1180 150" aria-hidden="true" focusable="false">
+  <path class="fr-base" d="M0 92H1180"/>
+  <path class="fr-solid" d="M0 90.9l2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7"/>
+  <path class="fr-dash motif-march" d="M640 89.6l2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3 2 0.2 2 0 2 0.1 2 0 2 0 2 0 2 0 2 -0.1 2 -0.1 2 -0.4 2 -0.9 2 -1.4 2 -1.8 2 -1.6 2 -0.6 2 0.6 2 1.6 2 1.8 2 1.4 2 0.9 2 0.4 2 0.3 2 1.2 2 -3.7 2 -23.4 2 -20.1 2 20.7 2 24.1 2 3.9 2 -2.9 2 -1.7 2 -1.3 2 -1.6 2 -2 2 -2.2 2 -2.2 2 -1.6 2 -1 2 0 2 1 2 1.6 2 2.2 2 2.2 2 2 2 1.6 2 1.2 2 0.8 2 0.5 2 0.3"/>
+  <path class="fr-line" d="M640 15V135"/>
+  <circle class="fr-pulse motif-pulse" cx="640" cy="92" r="10"/>
+  <circle class="fr-ring" cx="640" cy="92" r="9"/>
+</svg>
+<svg class="frontier-svg fr-m" viewBox="0 0 420 130" aria-hidden="true" focusable="false">
+  <path class="fr-base" d="M0 74H420"/>
+  <path class="fr-solid" d="M0 64.4l1.5 1.3 1.5 1.5 1.5 1.3 1.5 1.2 1.5 0.9 1.5 0.4 1.5 0 1.5 -0.5 1.5 -0.8 1.5 -0.9 1.5 -0.7 1.5 -0.2 1.5 0.4 1.5 0.8 1.5 1.2 1.5 1.1 1.5 1 1.5 0.7 1.5 0.5 1.5 0.2 1.5 0.2 1.5 0.5 1.5 0.8 1.5 -3.4 1.5 -13.8 1.5 -18.8 1.5 -3.8 1.5 16.6 1.5 17.5 1.5 6.8 1.5 -0.5 1.5 -2 1.5 -1.2 1.5 -0.8 1.5 -0.9 1.5 -1.1 1.5 -1.3 1.5 -1.4 1.5 -1.4 1.5 -1.4 1.5 -1.2 1.5 -0.8 1.5 -0.4 1.5 0.1 1.5 0.5 1.5 1 1.5 1.2 1.5 1.4 1.5 1.4 1.5 1.4 1.5 1 1.5 0.8 1.5 0.3 1.5 -0.2 1.5 -0.6 1.5 -0.9 1.5 -0.9 1.5 -0.5 1.5 -0.1 1.5 0.6 1.5 1 1.5 1.2 1.5 1.1 1.5 0.9 1.5 0.6 1.5 0.4 1.5 0.2 1.5 0.2 1.5 0.7 1.5 0.2 1.5 -6.4 1.5 -17 1.5 -16.2 1.5 4.1 1.5 19.3 1.5 14.2 1.5 3.7 1.5 -1.5 1.5 -1.8 1.5 -1 1.5 -0.8 1.5 -0.9 1.5 -1.2 1.5 -1.3 1.5 -1.5 1.5 -1.4 1.5 -1.3 1.5 -1.1 1.5 -0.7 1.5 -0.2 1.5 0.2 1.5 0.7 1.5 1.1 1.5 1.3 1.5 1.4 1.5 1.4 1.5 1.2 1.5 1 1.5 0.6 1.5 0.2 1.5 -0.4 1.5 -0.7 1.5 -0.9 1.5 -0.8 1.5 -0.4 1.5 0.2 1.5 0.7 1.5 1.1 1.5 1.2 1.5 1 1.5 0.8 1.5 0.5 1.5 0.3 1.5 0.2 1.5 0.4 1.5 0.9 1.5 -1.2 1.5 -10.1 1.5 -18.9 1.5 -10.9 1.5 11.3 1.5 19.4 1.5 10.4 1.5 1.2 1.5 -1.9 1.5 -1.5 1.5 -0.8 1.5 -0.9 1.5 -1 1.5 -1.2 1.5 -1.4 1.5 -1.5 1.5 -1.4 1.5 -1.2 1.5 -1 1.5 -0.5 1.5 -0.1 1.5 0.4 1.5 0.8 1.5 1.2 1.5 1.3 1.5 1.5 1.5 1.3 1.5 1.2 1.5 0.9 1.5 0.4 1.5 0 1.5 -0.5 1.5 -0.8 1.5 -0.9 1.5 -0.7 1.5 -0.2"/>
+  <path class="fr-dash motif-march" d="M228 67.9l1.5 0.4 1.5 0.8 1.5 1.2 1.5 1.1 1.5 1 1.5 0.7 1.5 0.5 1.5 0.2 1.5 0.2 1.5 0.5 1.5 0.8 1.5 -3.4 1.5 -13.8 1.5 -18.8 1.5 -3.8 1.5 16.6 1.5 17.5 1.5 6.8 1.5 -0.5 1.5 -2 1.5 -1.2 1.5 -0.8 1.5 -0.9 1.5 -1.1 1.5 -1.3 1.5 -1.4 1.5 -1.4 1.5 -1.4 1.5 -1.2 1.5 -0.8 1.5 -0.4 1.5 0.1 1.5 0.5 1.5 1 1.5 1.2 1.5 1.4 1.5 1.4 1.5 1.4 1.5 1 1.5 0.8 1.5 0.3 1.5 -0.2 1.5 -0.6 1.5 -0.9 1.5 -0.9 1.5 -0.5 1.5 -0.1 1.5 0.6 1.5 1 1.5 1.2 1.5 1.1 1.5 0.9 1.5 0.6 1.5 0.4 1.5 0.2 1.5 0.2 1.5 0.7 1.5 0.2 1.5 -6.4 1.5 -17 1.5 -16.2 1.5 4.1 1.5 19.3 1.5 14.2 1.5 3.7 1.5 -1.5 1.5 -1.8 1.5 -1 1.5 -0.8 1.5 -0.9 1.5 -1.2 1.5 -1.3 1.5 -1.5 1.5 -1.4 1.5 -1.3 1.5 -1.1 1.5 -0.7 1.5 -0.2 1.5 0.2 1.5 0.7 1.5 1.1 1.5 1.3 1.5 1.4 1.5 1.4 1.5 1.2 1.5 1 1.5 0.6 1.5 0.2 1.5 -0.4 1.5 -0.7 1.5 -0.9 1.5 -0.8 1.5 -0.4 1.5 0.2 1.5 0.7 1.5 1.1 1.5 1.2 1.5 1 1.5 0.8 1.5 0.5 1.5 0.3 1.5 0.2 1.5 0.4 1.5 0.9 1.5 -1.2 1.5 -10.1 1.5 -18.9 1.5 -10.9 1.5 11.3 1.5 19.4 1.5 10.4 1.5 1.2 1.5 -1.9 1.5 -1.5 1.5 -0.8 1.5 -0.9 1.5 -1 1.5 -1.2 1.5 -1.4 1.5 -1.5 1.5 -1.4 1.5 -1.2 1.5 -1 1.5 -0.5 1.5 -0.1 1.5 0.4 1.5 0.8 1.5 1.2"/>
+  <path class="fr-line" d="M228 13V117"/>
+  <circle class="fr-pulse motif-pulse" cx="228" cy="74" r="8"/>
+  <circle class="fr-ring" cx="228" cy="74" r="7"/>
+</svg>
+<p class="frontier-k"><span><i class="k-solid"></i>Cleared by the FDA</span><span><i class="k-dash"></i>Not cleared</span><span class="k-mid">The ring on the line marks Oct&nbsp;5, 2026: Breakthrough Device Designation, which is a designation and not a clearance.</span></p>
+</div>
+      <div class="cols2">
+        <div class="col-ok reveal">
+          <h3><span class="tag tag-ok">Cleared</span> Arrhythmia assessment</h3>
+          <ol class="led">
+            <li><time datetime="2024-12">Dec 2024</time><p>510(k) clearance of the credit-card-sized 3D ECG recorder, for arrhythmia assessment. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390025113353/ea0266730-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Nov&nbsp;21, 2025</a></p></li>
+            <li><time datetime="2025-11-20">Nov 20, 2025</time><p>A Not Substantially Equivalent letter from the FDA on the 12-lead synthesis software&rsquo;s 510(k). The company said it stood behind its clinical data and would work with the FDA. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390025113353/ea0266730-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Nov&nbsp;21, 2025</a></p></li>
+            <li><time datetime="2025-12-10">Dec 10, 2025</time><p>510(k) clearance of the 12-lead synthesis software for the assessment of arrhythmias, which the company said followed a successful appeal of the NSE determination. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/107/heartbeam-receives-fda-clearance-for-first-ever-cable-free" target="_blank" rel="noopener">Dec&nbsp;10, 2025 release</a></p></li>
+          </ol>
+          <blockquote class="indic">
+            <p>&ldquo;The synthesized 12-Lead ECG output is solely intended for manual assessment of normal sinus rhythm and the following non-life-threatening arrhythmias: sinus arrhythmia, sinus tachycardia, sinus bradycardia, atrial premature complexes, atrial fibrillation, and ventricular premature complex.&rdquo;</p>
+            <p class="indic-s">The output is &ldquo;similar, but not identical,&rdquo; to the same leads of a standard diagnostic 12-lead ECG, and the software &ldquo;is not intended to replace a standard 12-Lead ECG.&rdquo; <a class="src-l" href="https://www.heartbeam.com/indications" target="_blank" rel="noopener">Cleared Indications for Use, heartbeam.com</a></p>
+          </blockquote>
+        </div>
+        <div class="col-no reveal" style="--d:.08s">
+          <h3><span class="tag tag-no">Not cleared</span> The next indications</h3>
+          <ol class="led">
+            <li><span class="led-k">Heart attack</span><p>The indications text says the output is &ldquo;not intended for the assessment of any other arrhythmia or conditions,&rdquo; and names myocardial infarction and ischemia among them. The company is pursuing an expanded indication. On Oct&nbsp;5, 2026 it said the FDA granted Breakthrough Device Designation, a program that gives prioritized FDA interaction and is not a clearance. It said the designation was supported by proof-of-concept data presented at the 2025 American Heart Association Scientific Sessions and by findings from the ALIGN-ACS pilot. It said it expects to seek FDA alignment on a multicenter pivotal study design in the coming months and to begin enrolling shortly after. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/130/heartbeam-receives-fda-breakthrough-device-designation-for" target="_blank" rel="noopener">Oct&nbsp;5 release</a> <a class="src-l" href="https://www.heartbeam.com/indications" target="_blank" rel="noopener">Cleared indications</a></p></li>
+            <li><span class="led-k">12-lead patch</span><p>Described as investigational and not FDA cleared. A working prototype exists, and a pilot of about 50 patients at two hospitals in Belgrade, Serbia began in May 2026. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/121/heartbeam-initiates-pilot-study-of-first-on-demand-12-lead" target="_blank" rel="noopener">May&nbsp;11 release</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></p></li>
+            <li><span class="led-k">AI algorithms</span><p>The 10-K lists AI-based classification, screening and prediction algorithms among possible future versions of its products. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a></p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PART 4 EVIDENCE (white): a status ledger, not a claim. Company-reported sizes and results, each with where it stands on Oct 12, 2026. ============ -->
+<section id="evidence" class="part sec-white sec-ruled" aria-labelledby="ev-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">4</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Evidence</span>
+      <span class="folio-basis">Basis: 10-K; 10-Q; releases Jun&nbsp;30, Aug&nbsp;13, Sep&nbsp;21, 2026</span>
+    </header>
+    <div class="part-main">
+      <h2 id="ev-h" class="reveal">Five studies, <b>and where each stands.</b></h2>
+      <p class="lead reveal" style="--d:.05s">The company says its arrhythmia technology is backed by a completed pivotal study. For heart attack it cites a 2023 published paper, a more recent JACC: Advances algorithm paper, and pilots whose results have not been published. Sizes and results below are the company&rsquo;s.</p>
+      <div class="table-scroll reveal" style="--d:.1s" role="region" aria-label="Studies and their status" tabindex="0">
+        <table class="fin ledger">
+          <caption>Studies, as of Oct&nbsp;12, 2026</caption>
+          <thead><tr><th scope="col">Study</th><th scope="col">What it asks</th><th scope="col">Size and place</th><th scope="col">Where it stands</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">VALID-ECG<span class="rowtag">pivotal, arrhythmia</span></th><td data-label="What it asks">Does the synthesized 12-lead match a simultaneous standard 12-lead on ECG intervals and amplitudes?</td><td data-label="Size and place">198 patients, five US sites (Allegheny Health Network, Atlanta Heart Specialists, Mount Sinai Hospital, Northwell Health, Piedmont Heart Institute)</td><td data-label="Where it stands">Presented at the Heart Rhythm Society conference in April 2025: 93.4% overall diagnostic agreement, company-reported. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Clinical Data</a></td></tr>
+            <tr><th scope="row">JACC: Advances paper<span class="rowtag">published Aug 2023</span></th><td data-label="What it asks">Can a 3-lead ECG of this kind detect coronary artery occlusion, the cause of heart attacks?</td><td data-label="Size and place">Harvard Medical School faculty at Beth Israel Deaconess Medical Center with the Clinical Center of Serbia, Belgrade; patient count not stated in the filings</td><td data-label="Where it stands">The company says automated analysis of the 3D ECG and the 12-lead performed similarly, and that adding a normal baseline recording raised the area under the curve from 0.72 to 0.95. Proof-of-concept; not an FDA finding. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Clinical Data</a> The Aug&nbsp;13 release also cites a more recent JACC: Advances paper on an algorithm that combines the device with risk factors and symptoms in chest-pain patients. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a></td></tr>
+            <tr><th scope="row">ALIGN-ACS<span class="rowtag">pilot, heart attack</span></th><td data-label="What it asks">Device and standard 12-lead, each read for acute coronary syndrome, each compared with the final diagnosis at discharge</td><td data-label="Size and place">Chest-pain patients in two emergency departments in Belgrade, Serbia. Designed for about 100 (10-K, Q1 10-Q); enrolled 120 per the 10-Q and the Jun&nbsp;30 release, 134 per the Aug&nbsp;13 and Oct&nbsp;5 releases and the Sep&nbsp;21 letter. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526221565/beat-20260331.htm" target="_blank" rel="noopener">Q1 10-Q</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/130/heartbeam-receives-fda-breakthrough-device-designation-for" target="_blank" rel="noopener">Oct&nbsp;5 release</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></td><td data-label="Where it stands">Enrollment completed in June 2026. The company says full results will be presented at TCT 2026 (San Diego, Oct&nbsp;31 to Nov&nbsp;3). None published. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/125/heartbeam-completes-enrollment-in-heart-attack-detection" target="_blank" rel="noopener">Jun&nbsp;30 release</a></td></tr>
+            <tr><th scope="row">HEADSTART-ACS<span class="rowtag">pilot, heart attack</span></th><td data-label="What it asks">How accurately the technology detects heart attacks in a real-world setting</td><td data-label="Size and place">500 patients, supported by the Indonesian government, per the company</td><td data-label="Where it stands">The Sep&nbsp;21 letter says enrollment passed 75% in under three months. No results. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a></td></tr>
+            <tr><th scope="row">Patch pilot<span class="rowtag">investigational</span></th><td data-label="What it asks">Does a patch&rsquo;s on-demand synthesized 12-lead match a simultaneous standard 12-lead recorded right after an exercise stress test?</td><td data-label="Size and place">About 50 patients at high risk of coronary artery disease, two hospitals in Belgrade, Serbia</td><td data-label="Where it stands">Began May 2026. Not FDA cleared. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/121/heartbeam-initiates-pilot-study-of-first-on-demand-12-lead" target="_blank" rel="noopener">May&nbsp;11 release</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src-note reveal">The 10-Q says data analysis is underway and that the pilot&rsquo;s findings are &ldquo;expected to inform the design and de-risk operational assumptions&rdquo; for a planned US pivotal study and to support a future FDA submission. A pilot is not that study. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 5 DIRECTION (tint): the order of priorities as each document states it, then who is paying for what today. ============ -->
+<section id="direction" class="part sec-tint sec-ruled-b" aria-labelledby="dir-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">5</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Direction</span>
+      <span class="folio-basis">Basis: 10-K; 10-Q; releases Jun&nbsp;24 and Oct&nbsp;5; Sep&nbsp;21 letter</span>
+    </header>
+    <div class="part-main">
+      <h2 id="dir-h" class="reveal">The letter ranks its priorities. <b>Heart attack is first.</b></h2>
+      <p class="lead reveal" style="--d:.05s">The September 21 letter from the Executive Chairman and the President ranks the company&rsquo;s priorities, with heart attack detection first, and says the company will not build a large commercial organization around the current indication. The 10-K filed in March listed a limited launch first among its key initiatives without ranking them, and the June 24 release led with licensing the signal technology to partners. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/124/heartbeam-announces-strategic-shift-to-accelerate-global" target="_blank" rel="noopener">Jun&nbsp;24 release</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p>
+
+      <ol class="prio">
+        <li class="reveal"><span class="prio-n">1</span><div><h3>Heart attack detection</h3><p>The majority of financial and human resources go to the clinical, algorithm and regulatory work for a future indication. The letter points to the ALIGN-ACS pilot, HEADSTART-ACS past 75% enrollment, and a pre-submission request made to the FDA in August. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p></div></li>
+        <li class="reveal" style="--d:.06s"><span class="prio-n">2</span><div><h3>12-lead patch</h3><p>Advance it toward FDA clearance and commercialize through a strategic partner rather than a HeartBeam sales organization. The letter says the company is in active discussions and names no partner. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p></div></li>
+        <li class="reveal" style="--d:.12s"><span class="prio-n">3</span><div><h3>The cleared arrhythmia product</h3><p>Continue focused, limited commercialization without a major infrastructure build. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p></div></li>
+        <li class="reveal" style="--d:.18s"><span class="prio-n">4</span><div><h3>Partnerships and licensing</h3><p>Use partners where they can extend reach more efficiently. The June release named five channels: national health systems, ECG OEMs, Holter and patch makers, health systems, and consumer wearables; the 10-Q describes licensing as a plan. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/124/heartbeam-announces-strategic-shift-to-accelerate-global" target="_blank" rel="noopener">Jun&nbsp;24 release</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></p></div></li>
+      </ol>
+
+      <div class="launch reveal">
+        <h3>The commercial launch: two named Letters of Intent, no revenue yet</h3>
+        <dl class="launch-l">
+          <div><dt>First customer</dt><dd>ClearCardio, a preventive cardiology practice, announced in March 2026. Structured as a Letter of Intent with a per-patient subscription fee; the parties intend to negotiate a definitive agreement. The April offering was led, per the company&rsquo;s offering releases filed with the 8-K, by ClearCardio, with the company&rsquo;s executives, directors and existing investors. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026044672/ea0286655-8k_heart.htm" target="_blank" rel="noopener">8-K Apr&nbsp;16</a></dd></div>
+          <div><dt>Second</dt><dd>Atelier Health, a Beverly Hills concierge practice, in May 2026, on the same Letter of Intent structure. Four launch markets in all: New York metro, Dallas, South Florida and Southern California. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></dd></div>
+          <div><dt>Aug&nbsp;13 claims</dt><dd>The release says the company signed multiple commercial agreements across the four launch geographies, shipped first orders and onboarded initial patients in the second quarter, and is seeing orders of increasing magnitude in the third. It does not name the other customers, and the 10-Q says the company expects no material commercial revenue in 2026. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 2</a></dd></div>
+          <div><dt>Who pays</dt><dd>The 10-K names concierge practices, hospital-at-home and clinical trials as first targets, where payment sits outside the established reimbursement system, and says the long-term plan is to seek insurer coverage. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Market Strategy</a></dd></div>
+          <div><dt>Coverage path</dt><dd>The Oct&nbsp;5 release says Breakthrough designation is a prerequisite for certain expedited Medicare coverage pathways, including one CMS and the FDA have proposed. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/130/heartbeam-receives-fda-breakthrough-device-designation-for" target="_blank" rel="noopener">Oct&nbsp;5 release</a></dd></div>
+          <div><dt>Team</dt><dd>16 employees at Jun&nbsp;30, 2026; no large sales force planned for the initial launch. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PART 6 FINANCIALS (white): pre-revenue, so cash, burn and shares. Loss and cash to ONE zero-based axis; the funding ledger and the share count beside the going-concern sentence. ============ -->
+<section id="financials" class="part sec-white" aria-labelledby="fin-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">6</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Financials</span>
+      <span class="folio-basis">Basis: 10-K FY2025; 10-Q Jun&nbsp;30, 2026; 8-Ks</span>
+    </header>
+    <div class="part-main">
+      <h2 id="fin-h" class="reveal">No revenue. <b>What it spends, holds and issues.</b></h2>
+      <p class="lead reveal" style="--d:.05s">HeartBeam has reported no revenue. The figures that matter are the loss it funds each year, the cash it holds at each year end, and the shares it has issued to bridge the two. All amounts are US dollars as filed. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, MD&amp;A</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a></p>
+
+      <figure class="chart reveal" aria-labelledby="chart-t">
+<figcaption id="chart-t" class="chart-t">Net loss and cash, to one scale</figcaption>
+<p class="chart-key"><span><i class="kb-loss"></i>Net loss for the period</span><span><i class="kb-cash"></i>Cash at period end</span><span class="chart-u">US$ millions, as filed; axis from zero</span></p>
+<div class="chart-plot" style="--ax:24"><div class="chart-axis" aria-hidden="true"><span style="--y:24">24</span><span style="--y:16">16</span><span style="--y:8">8</span><span style="--y:0">0</span></div><div class="chart-groups"><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:4.4"><b>4.4</b></i><i class="bar b-cash" style="--v:13.2"><b>13.2</b></i></div><span class="grp-l">2021</span></div><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:13"><b>13.0</b></i><i class="bar b-cash" style="--v:3.6"><b>3.6</b></i></div><span class="grp-l">2022</span></div><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:14.6"><b>14.6</b></i><i class="bar b-cash" style="--v:16.2"><b>16.2</b></i></div><span class="grp-l">2023</span></div><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:19.4"><b>19.4</b></i><i class="bar b-cash" style="--v:2.4"><b>2.4</b></i></div><span class="grp-l">2024</span></div><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:21"><b>21.0</b></i><i class="bar b-cash" style="--v:4.4"><b>4.4</b></i></div><span class="grp-l">2025</span></div><div class="grp"><div class="bars"><i class="bar b-loss" style="--v:9.7"><b>9.7</b></i><i class="bar b-cash" style="--v:8.7"><b>8.7</b></i></div><span class="grp-l">H1 2026<small>6 months</small></span></div></div></div>
+<table class="sr-only"><caption>Net loss and cash, US$ millions</caption><thead><tr><th scope="col">Period</th><th scope="col">Net loss</th><th scope="col">Cash at period end</th></tr></thead><tbody><tr><th scope="row">2021</th><td>4.4</td><td>13.2</td></tr><tr><th scope="row">2022</th><td>13.0</td><td>3.6</td></tr><tr><th scope="row">2023</th><td>14.6</td><td>16.2</td></tr><tr><th scope="row">2024</th><td>19.4</td><td>2.4</td></tr><tr><th scope="row">2025</th><td>21.0</td><td>4.4</td></tr><tr><th scope="row">H1 2026</th><td>9.7</td><td>8.7</td></tr></tbody></table>
+<p class="chart-src">Net loss: each fiscal year as filed in the 10-K reports, and the six months to Jun&nbsp;30, 2026 from the 10-Q. Cash: the balance sheet at each period end, the last from the same 10-Q. The H1&nbsp;2026 loss covers six months, so it is a shorter period than the years beside it. Earlier years come from the 10-Ks filed Mar&nbsp;16, 2023 (<a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000177937223000006/0001779372-23-000006-index.htm" target="_blank" rel="noopener">2021 figures</a>), Mar&nbsp;20, 2024 (<a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000177937224000002/0001779372-24-000002-index.htm" target="_blank" rel="noopener">2022</a>) and Mar&nbsp;13, 2025 (<a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000162828025012614/0001628280-25-012614-index.htm" target="_blank" rel="noopener">2023</a>); 2024 and 2025 are in the 10-K below. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K FY2025</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, 2026</a></p>
+</figure>
+
+      <div class="fin-cols">
+        <div class="reveal">
+          <div class="table-scroll" role="region" aria-label="Operating results, six months" tabindex="0">
+            <table class="fin cmp">
+              <caption>Six months ended Jun&nbsp;30 ($ thousands, as filed)</caption>
+              <thead><tr><th scope="col"><span class="sr-only">Line</span></th><th scope="col" class="num">2026</th><th scope="col" class="num">2025</th><th scope="col" class="num">Change</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Selling, general and administrative</th><td class="num">5,110</td><td class="num">3,720</td><td class="num">+37%</td></tr>
+                <tr><th scope="row">Research and development</th><td class="num">4,698</td><td class="num">6,818</td><td class="num">&minus;31%</td></tr>
+                <tr><th scope="row">Total operating expenses</th><td class="num">9,808</td><td class="num">10,538</td><td class="num">&minus;7%</td></tr>
+                <tr><th scope="row">Interest income</th><td class="num">69</td><td class="num">80</td><td class="num">&minus;14%</td></tr>
+                <tr class="tot"><th scope="row">Net loss</th><td class="num">(9,739)</td><td class="num">(10,458)</td><td class="num">&minus;7%</td></tr>
+                <tr><th scope="row">Net cash used in operating activities</th><td class="num">(6,952)</td><td class="num">(7,922)</td><td class="num">&minus;12%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="src-note"><a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, statements and MD&amp;A</a> The 10-Q attributes $0.6M of the second-quarter SG&amp;A increase to non-cash expense from accelerating the former CEO&rsquo;s awards and $0.3M to a severance accrual, and calls both one-time. In the six months, R&amp;D fell mainly on lower product development ($1.2M), headcount ($0.4M) and non-cash stock compensation ($0.5M).</p>
+        </div>
+        <div class="fund reveal" style="--d:.08s">
+          <h3>How the first half was funded</h3>
+          <dl>
+            <div><dt>Mar&nbsp;31</dt><dd>Cash was about $2.0M, down from $4.4M at Dec&nbsp;31, 2025, before the April offering. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526221565/beat-20260331.htm" target="_blank" rel="noopener">Q1 10-Q, Liquidity</a></dd></div>
+            <div><dt>Apr&nbsp;14&ndash;16</dt><dd>Underwritten public offering of 12,500,000 shares at $0.80, about $10.0M gross. The underwriter&rsquo;s over-allotment on May&nbsp;7 added 1,875,000 shares: 14,375,000 shares, about $11.5M gross and $10.3M net. Directors and executives bought $1.0M; the offering releases say it was led by ClearCardio, the first commercial customer, with executives, directors and existing investors. The underwriter also received warrants for 718,750 shares at $0.92. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026044672/ea0286655-8k_heart.htm" target="_blank" rel="noopener">8-K Apr&nbsp;16</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 5</a></dd></div>
+            <div><dt>2026 ATM</dt><dd>Sales under the earlier at-the-market agreement: 970,467 shares for $1.5M net. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 5</a></dd></div>
+            <div><dt>Aug&nbsp;14</dt><dd>A new at-the-market agreement with Titan Partners Securities for up to $25.0M of stock at market prices, at a commission of up to 3%. This is registered capacity, not cash; no sales under it appear in the filings reviewed, and the 8-K does not say how much may be sold under shelf limits. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026090241/ea0302135-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Aug&nbsp;14</a></dd></div>
+            <div><dt>Cash flow</dt><dd>Operating &minus;$7.0M, investing &minus;$0.5M, financing +$11.8M; cash and restricted cash rose $4.3M. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, cash flows</a></dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="gc reveal">
+        <p class="gc-k">The company&rsquo;s own sentence</p>
+        <blockquote><p>&ldquo;The Company believes that its existing liquidity is insufficient to fund operations for the next twelve months following the issuance of these financial statements. These factors raise substantial doubt regarding the Company&rsquo;s ability to continue as a going concern.&rdquo;</p></blockquote>
+        <p class="gc-s">Source: <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, Note 2</a>. The auditor&rsquo;s report on the 2025 financial statements, by CBIZ CPAs P.C., also carries a going-concern paragraph. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, auditor&rsquo;s report</a> At the first-half 2026 rate of operating cash use, about $1.16M a month, $8.7M of cash is about 7.5 months: this page&rsquo;s arithmetic, not company guidance. In its Aug&nbsp;13 release the company said it expects 2026 net operating cash outflow below $14.0M, third-quarter outflow in line with the second quarter, baseline fourth-quarter outflow below $2.5M, and runway &ldquo;further into 2027&rdquo;; the 10-Q&rsquo;s going-concern language is unchanged. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a></p>
+      </div>
+
+      <div class="shares reveal">
+        <h3>Shares</h3>
+        <dl class="shares-l">
+          <div><dt>Dec&nbsp;31, 2025</dt><dd>40,117,404</dd></div>
+          <div><dt>Jun&nbsp;30, 2026</dt><dd>56,349,171</dd></div>
+          <div><dt>Change</dt><dd>+40.5% in six months (this page&rsquo;s arithmetic)</dd></div>
+          <div><dt>Also issuable</dt><dd>19,626,213 shares under options excluding exercisable penny options (9,883,389; 9,997,198 outstanding in all), RSUs (397,039), warrants (6,545,785) and performance RSUs (2,800,000), not counted in diluted loss per share <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 3</a></dd></div>
+        </dl>
+        <p class="src-note">Balance sheet at Jun&nbsp;30, 2026: cash $8.7M, total assets $10.6M, current liabilities $2.5M, no borrowings shown, stockholders&rsquo; equity $8.2M, accumulated deficit $87.0M. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, balance sheet</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 7 THE RECORD (tint): a dated ledger of what the filings and releases say happened, newest first. ============ -->
+<section id="record" class="part sec-tint sec-ruled-c" aria-labelledby="rec-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">7</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">The record</span>
+      <span class="folio-basis">Basis: SEC filings and the company&rsquo;s releases, Nov&nbsp;2025 to Oct&nbsp;2026</span>
+    </header>
+    <div class="part-main">
+      <h2 id="rec-h" class="reveal">Eleven months of <b>selected filings and releases.</b></h2>
+      <p class="lead reveal" style="--d:.05s">A selection of what the company filed or announced, newest first; EDGAR has every filing. Filings link to EDGAR; releases link to the company&rsquo;s investor site. <a class="src-l" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001779372&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">All filings on EDGAR</a></p>
+      <ol class="cal">
+        <li class="reveal"><time datetime="2026-10-05">Oct 5, 2026</time><span class="cal-t">Release</span><p>FDA Breakthrough Device Designation for the HeartBeam System as a tool for assessing potential heart attacks at home. The company says ALIGN-ACS data at TCT and an update on HEADSTART-ACS are expected in coming weeks. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/130/heartbeam-receives-fda-breakthrough-device-designation-for" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-09-21">Sep 21, 2026</time><span class="cal-t">Release</span><p>Letter to shareholders: heart attack detection first; the 12-lead patch through a partner; limited commercialization of the arrhythmia product without a large organization. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-08-14">Aug 14, 2026</time><span class="cal-t">8-K</span><p>At-the-market sales agreement with Titan Partners Securities for up to $25.0M of common stock, at a commission of up to 3%. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026090241/ea0302135-8k_heartbeam.htm" target="_blank" rel="noopener">8-K</a></p></li>
+        <li class="reveal"><time datetime="2026-08-13">Aug 13, 2026</time><span class="cal-t">10-Q</span><p>Second quarter: net loss $5.0M, cash $8.7M at Jun&nbsp;30, going-concern doubt. The same-day release lowers expected 2026 net operating cash outflow to below $14.0M. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-08-06">Aug 6, 2026</time><span class="cal-t">8-K/A</span><p>Former CEO Robert Eno&rsquo;s separation agreement, signed Jul&nbsp;30: $300,000 in cash (nine months of base salary), full acceleration of his unvested options and RSUs, option exercise period extended to Dec&nbsp;31, 2027 at the latest, up to nine months of COBRA. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026085822/ea0300812-8ka1_heart.htm" target="_blank" rel="noopener">8-K/A</a></p></li>
+        <li class="reveal"><time datetime="2026-08-03">Aug 3, 2026</time><span class="cal-t">8-K</span><p>Annual meeting held Jul&nbsp;31: seven directors elected, CBIZ CPAs P.C. ratified as auditor, and a 3,000,000-share increase to the 2022 Equity Incentive Plan not approved (3,957,529 for, 7,816,794 against). <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026084622/ea0300304-8k_heartbeam.htm" target="_blank" rel="noopener">8-K</a></p></li>
+        <li class="reveal"><time datetime="2026-07-02">Jul 2, 2026</time><span class="cal-t">8-K</span><p>Nasdaq deficiency notice dated Jun&nbsp;30: closing bid below the $1.00 minimum for 30 consecutive business days. No immediate effect on the listing; 180 days to regain compliance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026074979/ea0296965-8k_heart.htm" target="_blank" rel="noopener">8-K</a></p></li>
+        <li class="reveal"><time datetime="2026-06-30">Jun 30, 2026</time><span class="cal-t">Release</span><p>Enrollment in the ALIGN-ACS pilot completed, ahead of the third-quarter timeline the company had given. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/125/heartbeam-completes-enrollment-in-heart-attack-detection" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-06-24">Jun 24, 2026</time><span class="cal-t">8-K, release</span><p>CEO Robert Eno departs effective Jun&nbsp;30 in a reorganization; director Mark Strome resigned Jun&nbsp;18; Dr. Branislav Vajdic becomes principal executive officer Jul&nbsp;1. The release announces a strategic shift toward licensing the signal technology. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026071605/ea0295849-8k_heart.htm" target="_blank" rel="noopener">8-K</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/124/heartbeam-announces-strategic-shift-to-accelerate-global" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-06-18">Jun 18, 2026</time><span class="cal-t">DEF 14A</span><p>Proxy statement for the Jul&nbsp;31 annual meeting, including the proposal to add 3,000,000 shares to the 2022 Equity Incentive Plan. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526276053/beat-20260616.htm" target="_blank" rel="noopener">Proxy</a></p></li>
+        <li class="reveal"><time datetime="2026-06-22">Jun 22, 2026</time><span class="cal-t">8-K</span><p>Dr. Vajdic is granted 2,800,000 performance-based RSUs and a transaction bonus agreement tied to market-capitalization and share-price thresholds in a qualifying change in control. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026070628/ea0295318-8k_heart.htm" target="_blank" rel="noopener">8-K</a></p></li>
+        <li class="reveal"><time datetime="2026-05-13">May 13, 2026</time><span class="cal-t">10-Q</span><p>First quarter: cash about $2.0M at Mar&nbsp;31, before the April offering; going-concern doubt. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526221565/beat-20260331.htm" target="_blank" rel="noopener">10-Q</a></p></li>
+        <li class="reveal"><time datetime="2026-05-11">May 11, 2026</time><span class="cal-t">Release</span><p>Pilot study of the investigational 12-lead patch begins, about 50 patients at two hospitals in Belgrade. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/121/heartbeam-initiates-pilot-study-of-first-on-demand-12-lead" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2026-04-16">Apr 16, 2026</time><span class="cal-t">8-K</span><p>Public offering closes: 12,500,000 shares at $0.80, about $10.0M gross; the over-allotment on May&nbsp;7 brought the total to 14,375,000 shares and about $11.5M gross. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026044672/ea0286655-8k_heart.htm" target="_blank" rel="noopener">8-K</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 5</a></p></li>
+        <li class="reveal"><time datetime="2026-03-12">Mar 12, 2026</time><span class="cal-t">10-K</span><p>Fiscal 2025: net loss $21.0M, cash $4.4M at year end, going-concern doubt in the notes and the auditor&rsquo;s report. In March the company also announced its first commercial customer (Mar&nbsp;4), the first ALIGN-ACS patients (Mar&nbsp;5) and an AI collaboration with the Icahn School of Medicine at Mount Sinai (Mar&nbsp;10). <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K</a></p></li>
+        <li class="reveal"><time datetime="2025-12-10">Dec 10, 2025</time><span class="cal-t">Release</span><p>FDA clears the 12-lead synthesis software for arrhythmia assessment, which the company says followed a successful appeal. <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/107/heartbeam-receives-fda-clearance-for-first-ever-cable-free" target="_blank" rel="noopener">Release</a></p></li>
+        <li class="reveal"><time datetime="2025-11-21">Nov 21, 2025</time><span class="cal-t">8-K</span><p>The FDA issued a Not Substantially Equivalent letter, dated Nov&nbsp;20, on the 12-lead synthesis software 510(k). <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390025113353/ea0266730-8k_heartbeam.htm" target="_blank" rel="noopener">8-K</a></p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PART 8 DISCLOSURES (DARK, gravest stock): the company's own risk language, in the order a reader should weigh it. Heavier numerals, white rules, no colour. ============ -->
+<section id="disclosures" class="part sec-dark sec-dark-2 disc-band" aria-labelledby="dis-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">8</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">Disclosures</span>
+      <span class="folio-basis">Basis: 10-K; 10-Q; 8-Ks; releases</span>
+    </header>
+    <div class="part-main">
+      <h2 id="dis-h" class="reveal">Read these <b>before the rest.</b></h2>
+      <p class="lead reveal" style="--d:.05s">Eight things the filings and the company&rsquo;s own statements say that a reader of the earlier parts should weigh against them.</p>
+      <ol class="disc">
+        <li class="reveal"><span class="disc-n">01</span><div><h3>Going concern</h3><p>Management and the auditor both state substantial doubt about the company&rsquo;s ability to continue as a going concern. The 10-Q says the company expects no material commercial revenue in 2026 and that continued operations depend on raising more capital, with no assurance that financing will be available on acceptable terms, or at all. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, Note 2</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p></div></li>
+        <li class="reveal"><span class="disc-n">02</span><div><h3>Dilution and financing</h3><p>Shares outstanding rose 40.5% in six months to 56,349,171, and 19,626,213 more are issuable under outstanding awards and warrants. The August agreement allows up to $25.0M more stock to be sold at market prices; the 10-K said capacity under the earlier agreement was potentially subject to baby-shelf limits. Stockholders did not approve a 3,000,000-share increase to the equity plan on Jul&nbsp;31 (3,957,529 for, 7,816,794 against); the June proxy showed 6,542,707 plan shares still available, with awards outstanding plus shares available equal to 30% of shares outstanding, and on Jul&nbsp;24 the board granted 766,770 fully vested RSUs (534,370 to officers) in lieu of 2025 cash bonuses. The proxy (holdings at May&nbsp;31, 2026) listed Mark Strome at 6.91%, who resigned from the board on Jun&nbsp;18, and Public Ventures, the earlier ATM agent, at 5.61%; directors and executive officers as a group held 17.95%. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 3</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 9</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026090241/ea0302135-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Aug&nbsp;14</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026084622/ea0300304-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Aug&nbsp;3</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, MD&amp;A</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526276053/beat-20260616.htm" target="_blank" rel="noopener">Proxy</a></p></div></li>
+        <li class="reveal"><span class="disc-n">03</span><div><h3>Nasdaq listing</h3><p>On June&nbsp;30, 2026 Nasdaq notified the company that its closing bid price had been below $1.00 for 30 consecutive business days. The 8-K gives December&nbsp;28, 2026 as the date to regain compliance, which takes ten consecutive business days at or above $1.00; the 10-Q says December&nbsp;29. A second 180-day period may be available if other listing standards are met. The 10-Q says delisting &ldquo;would materially adversely affect the liquidity of the Company&rsquo;s common stock and its ability to raise capital.&rdquo; <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026074979/ea0296965-8k_heart.htm" target="_blank" rel="noopener">8-K Jul&nbsp;2</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, Recent Developments</a></p></div></li>
+        <li class="reveal"><span class="disc-n">04</span><div><h3>Regulatory</h3><p>The FDA issued a Not Substantially Equivalent letter on the synthesis software in November 2025; clearance followed on appeal in December 2025. The clearance is for arrhythmia assessment only. The 10-K says a future 510(k) or De Novo submission is expected to require clinical data, and warns that the FDA may find a modified or expanded device not substantially equivalent and require a PMA or a De Novo reclassification and more clinical data. Breakthrough designation is not a clearance; the company says it expects to seek FDA alignment on a pivotal study design in the coming months and to give timeline detail by year-end. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390025113353/ea0266730-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Nov&nbsp;21, 2025</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/107/heartbeam-receives-fda-clearance-for-first-ever-cable-free" target="_blank" rel="noopener">Dec&nbsp;10, 2025 release</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/130/heartbeam-receives-fda-breakthrough-device-designation-for" target="_blank" rel="noopener">Oct&nbsp;5 release</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/128/heartbeam-reports-second-quarter-2026-results" target="_blank" rel="noopener">Aug&nbsp;13 release</a></p></div></li>
+        <li class="reveal"><span class="disc-n">05</span><div><h3>Leadership</h3><p>The CEO, Robert Eno, who was also a director, left on June&nbsp;30, 2026. The 10-Q says operations run through implementation teams led by Dr. Branislav Vajdic, the founder and President, who is principal executive officer, and Richard Ferrari, the Executive Chairman, until a new CEO is identified. Director Mark Strome resigned on June&nbsp;18. The company said neither departure resulted from a disagreement. Dr. Vajdic was granted 2,800,000 performance-based RSUs (about 5% of shares outstanding, this page&rsquo;s arithmetic), which vest only on milestones and three years of service and accelerate on a change in control, and a transaction bonus agreement tied to market-capitalization and share-price thresholds in a qualifying change in control. The former CEO&rsquo;s separation includes full acceleration of his equity awards. The 10-K says the company&rsquo;s success depends on Dr. Vajdic and other key managers and that it carries no key-man life insurance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026071605/ea0295849-8k_heart.htm" target="_blank" rel="noopener">8-K Jun&nbsp;24</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026070628/ea0295318-8k_heart.htm" target="_blank" rel="noopener">8-K Jun&nbsp;22</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026085822/ea0300812-8ka1_heart.htm" target="_blank" rel="noopener">8-K/A Aug&nbsp;6</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p></div></li>
+        <li class="reveal"><span class="disc-n">06</span><div><h3>Commercial status</h3><p>The system has generated no revenue. Both customer agreements are Letters of Intent, not definitive agreements. The September&nbsp;21 letter says the company will not build a large commercial organization around the arrhythmia indication at this stage. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a></p></div></li>
+        <li class="reveal"><span class="disc-n">07</span><div><h3>Evidence</h3><p>ALIGN-ACS is run in Belgrade, Serbia and its results are unpublished; HEADSTART-ACS is described as supported by the Indonesian government, no source names its sites, and it has no results. ALIGN-ACS is stated as 120 patients in the 10-Q and 134 in the company&rsquo;s later releases. Figures such as the 93.4% agreement are the company&rsquo;s own, from a study the 10-K describes; they are not an FDA statement. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Jun&nbsp;30, MD&amp;A</a> <a class="src-l" href="https://ir.heartbeam.com/news-events/press-releases/detail/129/heartbeam-inc-letter-to-shareholders" target="_blank" rel="noopener">Sep&nbsp;21 letter</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Clinical Data</a></p></div></li>
+        <li class="reveal"><span class="disc-n">08</span><div><h3>Reimbursement</h3><p>The 10-K warns that failing to obtain and maintain adequate third-party reimbursement would have a material adverse effect on the business, and that commercial payers may treat the technology as &ldquo;experimental and investigational&rdquo; and refuse to reimburse it. The first customers are in segments that pay outside the reimbursement system. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 9 PEOPLE AND CONTACT (white): leadership by initials, the official investor site, alerts, and the contacts as the investor site and the 8-K cover show them. ============ -->
+<section id="contact" class="part sec-white sec-ruled" aria-labelledby="con-h">
+  <div class="wrap part-grid">
+    <header class="folio reveal">
+      <span class="folio-n">9</span>
+      <svg class="beat" viewBox="0 0 84 28" width="84" height="28" aria-hidden="true" focusable="false"><path class="motif-beat" pathLength="1" d="M0 18.5l1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0 1.5 0 1.5 0 1.5 -0.1 1.5 -0.2 1.5 -0.2 1.5 -0.4 1.5 -0.3 1.5 -0.4 1.5 -0.2 1.5 0 1.5 0.1 1.5 0.3 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.2 1.5 0.1 1.5 0.1 1.5 0 1.5 0.3 1.5 0 1.5 -2.1 1.5 -5.5 1.5 -5.2 1.5 1.3 1.5 6.3 1.5 4.6 1.5 1.2 1.5 -0.5 1.5 -0.6 1.5 -0.3 1.5 -0.3 1.5 -0.3 1.5 -0.4 1.5 -0.4 1.5 -0.5 1.5 -0.4 1.5 -0.5 1.5 -0.3 1.5 -0.2 1.5 -0.1 1.5 0.1 1.5 0.2 1.5 0.3 1.5 0.5 1.5 0.4 1.5 0.5 1.5 0.4 1.5 0.4 1.5 0.3 1.5 0.3"/></svg>
+      <span class="folio-k">People and contact</span>
+      <span class="folio-basis">Basis: 8-K Aug&nbsp;3; 10-Q; ir.heartbeam.com</span>
+    </header>
+    <div class="part-main">
+      <h2 id="con-h" class="reveal">Who runs it, <b>and how to reach it.</b></h2>
+      <ul class="people reveal" style="--d:.05s">
+        <li><span class="mono-i" aria-hidden="true">BV</span><div><b>Branislav Vajdic, PhD</b><span>Founder and President; principal executive officer since Jul&nbsp;1, 2026; director</span></div></li>
+        <li><span class="mono-i" aria-hidden="true">RF</span><div><b>Richard Ferrari</b><span>Executive Chairman of the Board</span></div></li>
+        <li><span class="mono-i" aria-hidden="true">TC</span><div><b>Timothy Cruickshank</b><span>Chief Financial Officer</span></div></li>
+        <li><span class="mono-i" aria-hidden="true">BH</span><div><b>Bryan Humbarger</b><span>Chief Commercial Officer, hired January 2026 per the 10-K; not named in later filings reviewed</span></div></li>
+        <li><span class="mono-i" aria-hidden="true">KP</span><div><b>Kenneth Persen</b><span>Chief System Deployment Officer, a named executive officer in the 10-K and the proxy</span></div></li>
+      </ul>
+      <p class="src-note reveal">Seven directors were elected on Jul&nbsp;31, 2026: Richard Ferrari, Branislav Vajdic, George A. de Urioste, Marga Ortigas-Wedekind, Willem Elfrink, Kenneth Nelson and Michael Jaff. Governance notes: the 10-K and the proxy report late Form 4 filings in 2025 by several directors and officers, and the 10-Q describes a consulting agreement with an independent director at $5,000 a month plus 70,000 options. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026084622/ea0300304-8k_heartbeam.htm" target="_blank" rel="noopener">8-K Aug&nbsp;3</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526104080/beat-20251231.htm" target="_blank" rel="noopener">10-K, Item 10</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526276053/beat-20260616.htm" target="_blank" rel="noopener">Proxy</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q Note 7</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000119312526349121/beat-20260630.htm" target="_blank" rel="noopener">10-Q signatures</a></p>
+
+      <div class="alerts reveal">
+        <div><h3>Alerts and the official record</h3><p>The company&rsquo;s investor site offers email alerts, press releases, SEC filings, financial results and stock data. This concept page shows no live quote.</p></div>
+        <div class="alerts-cta"><a class="btn btn-primary" href="https://ir.heartbeam.com/" target="_blank" rel="noopener">Official investor site <span class="arw" aria-hidden="true">&nearr;</span></a><a class="btn btn-ghost" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001779372&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">SEC filings (EDGAR) <span class="arw" aria-hidden="true">&nearr;</span></a></div>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div><h3>Company</h3><p>HeartBeam, Inc.<br>2118 Walsh Avenue, Suite 210<br>Santa Clara, CA 95050<br>(408) 899-4443</p></div>
+        <div><h3>Investor relations</h3><p>MZ North America<br><a href="mailto:BEAT@mzgroup.us">BEAT@mzgroup.us</a></p></div>
+        <div><h3>Transfer agent</h3><p>VStock Transfer<br>18 Lafayette Place<br>Woodmere, NY 11598</p></div>
+      </div>
+      <p class="src-note reveal">Investor-relations and transfer-agent details as shown on <a class="src-l" href="https://ir.heartbeam.com/" target="_blank" rel="noopener">ir.heartbeam.com</a>; company address and telephone from the cover of the <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1779372/000121390026071605/ea0295849-8k_heart.htm" target="_blank" rel="noopener">8-K Jun&nbsp;24</a>.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="footer-logo" href="#hero" aria-label="HeartBeam, back to the top"><img src="img/logo.png" alt="HeartBeam" width="238" height="42"></a>
+      <ul class="footer-links">
+        <li><a href="https://ir.heartbeam.com/" target="_blank" rel="noopener">Official investor site</a></li>
+        <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001779372&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">SEC filings (EDGAR)</a></li>
+        <li><a href="https://www.heartbeam.com/" target="_blank" rel="noopener">heartbeam.com</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a href="#record">The record</a></li>
+      </ul>
+    </div>
+    <p class="fls"><b>Sources and method:</b> Figures come from the company&rsquo;s annual report on Form 10-K for 2025 (filed March 12, 2026), its quarterly report on Form 10-Q for the quarter ended June 30, 2026 (filed August 13, 2026), its Forms 8-K and 8-K/A through August 14, 2026, and the company&rsquo;s press releases and letter to shareholders through October 5, 2026, each linked beside the item. Releases are not SEC filings; where documents differ (the ALIGN-ACS enrollment, 120 in the 10-Q and 134 in later releases; the Nasdaq compliance date, December 28 in the 8-K and December 29 in the 10-Q; issued patents, 25 in the 10-K and 26 in the 10-Q) the page says so. Amounts are US dollars as filed. Figures marked as this page&rsquo;s arithmetic (the change in shares outstanding, the months of cash, the change in the operating-cash row, the performance RSUs as a share of shares outstanding) are derived, not reported. The company&rsquo;s own estimates of a $15 billion heart attack market and a more than $40 billion platform opportunity, and the third-party market projections in the 10-K, are not reproduced here. The logo, the product photograph and the product render are the company&rsquo;s own, from heartbeam.com; the 12-lead sheet and the frontier line are original drawings, and their waveforms are schematic. This page shows no live share quote.</p>
+    <p class="fls"><b>About this page:</b> This is an independent design concept and is not the official HeartBeam investor relations website. It is not affiliated with, endorsed by, or maintained by HeartBeam, Inc. Figures were assembled from public materials at a point in time and may be outdated; verify every figure against the company's official SEC filings. For official information, visit <a href="https://ir.heartbeam.com/">ir.heartbeam.com</a>.</p>
+    <p class="fls"><b>Forward-Looking Statements:</b> This website contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, including statements regarding the company's ability to continue as a going concern and to raise the additional capital it says it needs, the dilution that would follow from further sales of its stock, the continued listing of its common stock on Nasdaq, the timing, results and regulatory path of its clinical studies and of any FDA submission for a heart attack indication, the commercial adoption of its cleared arrhythmia product, its plans to license its technology and to find a partner for its 12-lead patch, and the effect of its leadership transition. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied. We undertake no obligation to update any forward-looking statements except as required by law. See the company's SEC filings, including its most recent 10-K and 10-Q, for a full discussion of risk factors.</p>
+    <p class="market-note">Market data, where shown, is delayed at least 15 minutes and provided for this concept only. Real-time quotes and official figures are available through the company's investor relations site and SEC filings. This concept page shows no live or delayed share quote; the only prices of HeartBeam shares it cites are the $0.80 offering price and the $1.00 Nasdaq minimum bid threshold, as stated in the company's filings.</p>
+  </div>
+</footer>
+
+<script>
+/* mediaconsole motion: inlined by scaffold.mjs at the end of body, identical on every page; never edit it.
+   Sets html.js, runs the ONE reveal observer (fires the mc:reveal hook), scroll-spy, hamburger aria, and the
+   #hero-motif .paused toggle (off-screen, hidden tab, [data-motif-toggle]). Null-guarded: a failure reveals everything. */
+(function(){
+  var d=document,root=d.documentElement;
+  root.classList.add('js');
+  var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var hasIO='IntersectionObserver' in window;
+  function fire(el,name,detail){
+    var ev;
+    try{ev=new CustomEvent(name,{bubbles:true,detail:detail})}
+    catch(x){ev=d.createEvent('CustomEvent');ev.initCustomEvent(name,true,false,detail)}
+    el.dispatchEvent(ev);
+  }
+  /* mc:reveal fires ONCE per .reveal element, bubbling, as .in lands; detail.reduced is true under reduced motion.
+     Components hook here (counters.js) instead of adding a second observer. */
+  function show(el){
+    if(el.classList.contains('in'))return;
+    el.classList.add('in');
+    fire(el,'mc:reveal',{reduced:reduce});
+  }
+  try{
+    var els=[].slice.call(d.querySelectorAll('.reveal'));
+    if(reduce||!hasIO){els.forEach(show)}
+    else{
+      var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);show(e.target)}})},{threshold:.12});
+      els.forEach(function(el){io.observe(el)});
+    }
+  }catch(err){root.classList.remove('js');[].forEach.call(d.querySelectorAll('.reveal'),function(el){el.classList.add('in')})}
+  try{
+    var burger=d.querySelector('.nav-burger'),links=d.getElementById('nav-links'),nav=d.querySelector('.site-nav');
+    if(burger&&links){
+      var setOpen=function(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o?'true':'false')};
+      burger.addEventListener('click',function(){setOpen(!links.classList.contains('open'))});
+      links.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setOpen(false)});
+      d.addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Esc')&&links.classList.contains('open')){setOpen(false);burger.focus()}});
+    }
+    if(nav){var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>8)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
+  }catch(err){}
+  try{
+    var na=[].slice.call(d.querySelectorAll('.nav-links a[href^="#"]:not(.btn)'));
+    if(na.length&&hasIO){
+      var so=new IntersectionObserver(function(en){en.forEach(function(e){
+        if(!e.isIntersecting)return;var id='#'+e.target.id;
+        na.forEach(function(a){var on=a.getAttribute('href')===id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+      })},{rootMargin:'-40% 0px -55% 0px'});
+      na.forEach(function(a){var t=d.getElementById(a.getAttribute('href').slice(1));if(t)so.observe(t)});
+    }
+  }catch(err){}
+  /* hero motif pause: toggles .paused on #hero-motif (off-screen, hidden tab, or the user's [data-motif-toggle]).
+     The class is the whole contract: substrate CSS pauses every CSS animation inside it; JS motifs watch it (wave.js). */
+  try{
+    var motif=d.getElementById('hero-motif');
+    if(motif&&!reduce){
+      var hero=d.getElementById('hero')||motif,hv=true,user=false,tg=[].slice.call(d.querySelectorAll('[data-motif-toggle]'));
+      var sm=function(){var p=user||!hv||d.hidden;motif.classList.toggle('paused',p)};
+      if(hasIO)new IntersectionObserver(function(en){en.forEach(function(e){hv=e.isIntersecting});sm()},{threshold:0}).observe(hero);
+      d.addEventListener('visibilitychange',sm);
+      tg.forEach(function(b){
+        b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){user=!user;tg.forEach(function(t){t.setAttribute('aria-pressed',user?'true':'false')});sm()});
+      });
+    }
+  }catch(err){}
+})();
+</script>
+</body>
+</html>
